@@ -58,6 +58,8 @@ JosephHopeHouse is a room in East Village.
 	JosephHopeHouse is south of East Village Centre. 
 
 [ West Village ]
+My House is a room in West Village.
+	My House is south of West Village Centre.
 
 [ North Village ]
 The Wheat Field is a room in North Village.
@@ -70,17 +72,21 @@ The Wheat Field is a room in North Village.
 
 [ Direction Overrides ]
 Instead of going east when the location is East Village Centre or the location is The Wheat Field:
-	say "You dont feel like going for a swim today.";
+	say "You dont feel like going for a swim today. Let's focus on finding our goat.";
 	stop the action.
 
 Instead of going west when the location is West Village Centre:
-	say "If your goat went in there, it's long gone. Lets keep looking around the village.";
+	say "If your goat went in there, it's long gone. Let's keep looking around the village.";
 	stop the action.
 	
 Instead of going north when the location is North Village Centre or the location is The Wheat Field:
-	say "If your goat went in there, it's long gone. Lets keep looking around the village.";
+	say "If your goat went in there, it's long gone. Let's keep looking around the village.";
 	stop the action.
 
 Instead of going south when the location is South Village Centre:
-	say "If your goat went in there, it's long gone. Lets keep looking around the village.";
+	say "If your goat went in there, it's long gone. Let's keep looking around the village.";
 	stop the action.
+	
+[ Main Loop ]
+The player is Rowan. 
+	Rowan is a person in My House.
