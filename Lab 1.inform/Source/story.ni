@@ -14,29 +14,32 @@ After looking:
 		say "There are no obvious exits from here.";
 
 [ Regions ]
-Clearhollow is a region. 
+Clearhollow is a region.
 
-East Village is a region in Clearhollow. 
-West Village is a region in Clearhollow. 
-North Village is a region in Clearhollow. 
-South Village is a region in Clearhollow. 
+The Village is a region in Clearhollow.
+The Boundaries is a region in Clearhollow.
+
+East Village is a region in The Village.
+West Village is a region in The Village.
+North Village is a region in The Village.
+South Village is a region in The Village.
 
 [ Village Boundries ]
-The Lake is a room. 
-	West of the Lake is nowhere.
-The North Forest is a room.
+The Lake is a room in The Boundaries.
+	West of The Lake is nowhere.
+The North Forest is a room in The Boundaries.
 	South of The North Forest is nowhere.
-The West Forest is a room.
-	East of the West Forest is nowhere.
-The South Forest is a room.
+The West Forest is a room in The Boundaries.
+	East of The West Forest is nowhere.
+The South Forest is a room in The Boundaries.
 	North of The South Forest is nowhere.
 
 [ Village Centres ]
-Village Centre is a room in Clearhollow. 
+Village Centre is a room in The Village.
 
 East Village Centre is a room in East Village.
 	East Village Centre is east of Village Centre.
-	East of East Village Centre is The Lake. 
+	East of East Village Centre is The Lake.
 
 West Village Centre is a room in West Village.
 	West Village Centre is west of Village Centre.
@@ -51,22 +54,35 @@ South Village Centre is a room in South Village.
 	South of South Village Centre is The South Forest.
 
 [ East Village]
-The Fishing House is a room in East Village. 
-	The Fishing House is north of East Village Centre. 
-JosephHopeHouse is a room in East Village. 
-	The printed name of JosephHopeHouse is "Joseph and Hope's House". 
-	JosephHopeHouse is south of East Village Centre. 
+The Fishing House is a room in East Village.
+	The Fishing House is north of East Village Centre.
+JosephHopeHouse is a room in East Village.
+	The printed name of JosephHopeHouse is "Joseph and Hope's House".
+	JosephHopeHouse is south of East Village Centre.
 
 [ West Village ]
-My House is a room in West Village.
-	My House is south of West Village Centre.
+My Plot is a region in West Village.
+
+My House is a room in My Plot.
+    The House Door is a door.
+		The House Door is north of My House and south of My Yard.
+    My Bed is a supporter in My House.
+
+My Yard is a room in My Plot.
+    The Yard Door is a door.
+		The Yard Door is north of My Yard and south of the West Village Centre.
+    The Pen Door is a door.
+		The Pen Door is west of My Yard and east of My Goat Pen.
+
+My Goat Pen is a room in My Plot.
+
 
 [ North Village ]
 The Wheat Field is a room in North Village.
 	The Wheat Field is east of North Village Centre.
 	The Wheat Field is north of The Fishing House.
-	North of The Wheat Field is The North Forest.
 	East of The Wheat Field is The Lake.
+	North of The Wheat Field is The North Forest.
 
 [ South Village ]
 
@@ -88,5 +104,6 @@ Instead of going south when the location is South Village Centre:
 	stop the action.
 	
 [ Main Loop ]
-The player is Rowan. 
-	Rowan is a person in My House.
+The player is Rowan.
+	Rowan is a person.
+	Rowan is on My Bed.
