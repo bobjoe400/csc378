@@ -88,7 +88,8 @@ West Village is a region in The Village.
 			The Taproom is a room in MossMug.
 				The Taproom is west of The Common Area.
 			The Lodge is a room in MossMug.
-				The Lodge is north of The Common Area.
+				The Lodge Door is a door.
+					The Lodge Door is south of The Lodge and north of The Common Area.
 
 [ North Village ]
 North Village is a region in The Village.
