@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Player
+  - Platforms
+  - Traps
+  - Shadows
+  - Props
+  - Background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 2918904883
+    locked: 0
+  - name: Shadows
+    uniqueID: 1840809133
+    locked: 0
+  - name: Platforms
+    uniqueID: 3693571619
+    locked: 0
+  - name: Player
+    uniqueID: 1846003541
+    locked: 0
+  - name: Foreground
+    uniqueID: 762462753
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  m_RenderingLayers:
+  - Default
