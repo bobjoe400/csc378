@@ -587,8 +587,8 @@ MonoBehaviour:
   Damping: {x: 0.5, y: 0.2, z: 0.5}
   Lookahead:
     Enabled: 1
-    Time: 0.5
-    Smoothing: 0.5
+    Time: 0.313
+    Smoothing: 4.8
     IgnoreY: 0
 --- !u!4 &501019802 stripped
 Transform:
