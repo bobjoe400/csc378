@@ -14,3 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.02
   jumpingPower: 6.72
+  wallJumpPower: 5
+  wallJumpDirectionPower: 8
+  wallDetectionDistance: 0.1
+  wallJumpCooldown: 0.2
+  longEdgeOffsetFactor: 0.472
+  shortEdgeOffsetFactor: 0.501
+  numberOfRays: 6
+  rayLength: 0.1
+  edgeInsetFactor: 0
+  longEdgeWidthFactor: 0.762
+  shortEdgeWidthFactor: 0.385
+  groundAngleThreshold: 0.7
+  wallAngleThreshold: 0.5
