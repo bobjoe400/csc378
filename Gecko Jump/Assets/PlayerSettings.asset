@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 6.02
   jumpingPower: 6.72
   wallJumpPower: 5
-  wallJumpDirectionPower: 8
+  wallJumpDirectionPower: 1
   wallDetectionDistance: 0.1
   wallJumpCooldown: 0.2
   longEdgeOffsetFactor: 0.472
