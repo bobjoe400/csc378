@@ -4602,6 +4602,7 @@ GameObject:
   - component: {fileID: 669572598}
   - component: {fileID: 669572603}
   - component: {fileID: 669572604}
+  - component: {fileID: 669572605}
   m_Layer: 9
   m_Name: Gerald
   m_TagString: Untagged
@@ -4772,7 +4773,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669572605}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -4792,7 +4793,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669572605}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 0
@@ -4816,7 +4817,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669572605}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -4909,6 +4910,77 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &669572605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669572597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972a73b599a2b7745b72fc8a02037e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 5277b38a46d255b44b05bb1fc839c4e6, type: 2}
+  rb: {fileID: 669572598}
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  showDirectionVectors: 1
+  showCollisionRays: 1
+  animator: {fileID: 669572604}
+  idleAnimParam: Idle
+  movingAnimParam: Moving
+  attackAnimParam: Attack
+  attackAnimationDuration: 0.3
+  audioSource: {fileID: 539448410}
+  jumpSound: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
+  landSound: {fileID: 8300000, guid: eaae8fe8d600e1f459f34aa5757fa3b8, type: 3}
+  attackSound: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
+  footstepSound: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
+  soundVolume: 1
+  attackHitbox: {fileID: 790611151}
+  attackHitboxOffset: {x: 0.5, y: 0}
+  characterSprite: {fileID: 669572600}
+  pillLeft: {x: 0, y: 0}
+  pillDown: {x: 0, y: 0}
+  visualUp: {x: 0, y: 0}
+  visualRight: {x: 0, y: 0}
+  realAngle: 0
+  visualAngle: 0
+  leftContact:
+    isInContact: 0
+    isGround: 0
+    isWall: 0
+    contactNormal: {x: 0, y: 0}
+    contactPoint: {x: 0, y: 0}
+    contactDistance: 3.4028235e+38
+    dotProduct: 0
+  rightContact:
+    isInContact: 0
+    isGround: 0
+    isWall: 0
+    contactNormal: {x: 0, y: 0}
+    contactPoint: {x: 0, y: 0}
+    contactDistance: 3.4028235e+38
+    dotProduct: 0
+  topContact:
+    isInContact: 0
+    isGround: 0
+    isWall: 0
+    contactNormal: {x: 0, y: 0}
+    contactPoint: {x: 0, y: 0}
+    contactDistance: 3.4028235e+38
+    dotProduct: 0
+  bottomContact:
+    isInContact: 0
+    isGround: 0
+    isWall: 0
+    contactNormal: {x: 0, y: 0}
+    contactPoint: {x: 0, y: 0}
+    contactDistance: 3.4028235e+38
+    dotProduct: 0
 --- !u!1 &790611151
 GameObject:
   m_ObjectHideFlags: 0
