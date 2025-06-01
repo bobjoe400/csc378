@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string attackAnimParam = "Attack";
     [SerializeField] private float attackAnimationDuration = 0.3f; // Match this with your animation 
 
+    [Header("Player Effects")]
+    [SerializeField] private ParticleSystem landingParticleSystem; // Assign a ParticleSystem in scene
+    [SerializeField] private float particleOffsetY = 0.5f;
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip jumpSound;
@@ -142,6 +146,9 @@ public class PlayerMovement : MonoBehaviour
         bool isGroundedNow = IsGrounded();
         if (isGroundedNow && !wasGrounded && landSound != null)
         {
+            Vector2 landPosition = GetGroundContactPosition();
+            SpawnParticles(landPosition, landingParticleSystem);
+
             PlaySound(landSound);
         }
         wasGrounded = isGroundedNow;
@@ -445,12 +452,58 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    private Vector2 GetGroundContactPosition()
+    {
+        CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(platformLayer);
+        contactFilter.useTriggers = false;
+        
+        // Get all contacts
+        ContactPoint2D[] contacts = new ContactPoint2D[10];
+        int contactCount = capsule.GetContacts(contactFilter, contacts);
+        
+        if (contactCount > 0)
+        {
+            // Find the lowest contact point (closest to ground)
+            Vector2 highestPoint = contacts[0].point;
+            for (int i = 1; i < contactCount; i++)
+            {
+                if (contacts[i].point.y > highestPoint.y)
+                {
+                    highestPoint = contacts[i].point;
+                }
+            }
+            return highestPoint;
+        }
+        
+        // Fallback: use bottom of collider
+        return (Vector2)transform.position + Vector2.down * (capsule.size.y * 0.5f);
+    }
+
+    private void SpawnParticles(Vector2 position, ParticleSystem particleSystem)
+    {
+        if (particleSystem != null)
+        {
+            // Offset slightly above the ground
+            Vector2 spawnPosition = position + Vector2.up * particleOffsetY;
+            ParticleSystem spawnedParticles = Instantiate(particleSystem, spawnPosition, Quaternion.identity);
+
+            spawnedParticles.Play();
+        }
+    }
+
     private void PerformGroundJump()
     {
+        // Store the jump position before changing velocity
+        Vector2 jumpPosition = GetGroundContactPosition();
+
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, settings.jumpingPower);
 
         // Play jump sound
         PlaySound(jumpSound);
+
+        SpawnParticles(jumpPosition, landingParticleSystem);
     }
     
     private void PerformWallJump()
