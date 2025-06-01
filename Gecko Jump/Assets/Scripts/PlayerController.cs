@@ -23,8 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float attackAnimationDuration = 0.3f; // Match this with your animation 
 
     [Header("Player Effects")]
-    [SerializeField] private ParticleSystem landingParticleSystem; // Assign a ParticleSystem in scene
-    [SerializeField] private float particleOffsetY = 0.0f;
+    [SerializeField] private ParticleSystem jumpingParticleSystem; // Assign a ParticleSystem in scene
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -155,22 +154,9 @@ public class PlayerMovement : MonoBehaviour
         bool isGroundedNow = IsGrounded();
         if (isGroundedNow && !wasGrounded && landSound != null)
         {
-            Vector2 landPosition;
-            if (isUpsideDown)
-            {
-                // If upside down, use the top contact point for landing
-                landPosition = topContact.contactPoint;
-            }
-            else
-            {
-                // Use the bottom contact point for landing
-                landPosition = bottomContact.contactPoint;
-            }
-
-            SpawnParticles(landPosition, landingParticleSystem);
-
             PlaySound(landSound);
         }
+        
         wasGrounded = isGroundedNow;
 
         animator.SetBool("Grounded", isGroundedNow);
@@ -423,14 +409,30 @@ public class PlayerMovement : MonoBehaviour
                 shouldFlipVertically = false;
             }
         }
-        
+
         // Apply orientation to sprite
         if (characterSprite != null)
         {
             characterSprite.flipY = shouldFlipHorizontally;
             characterSprite.flipX = shouldFlipVertically;
         }
-        
+
+        // Apply orientation to the particle system
+        if (jumpingParticleSystem != null)
+        {
+            Vector2 pos = jumpingParticleSystem.transform.localPosition;
+
+            // Flip Y if horizontal orientation changed
+            if ((shouldFlipHorizontally && pos.y > 0) || (!shouldFlipHorizontally && pos.y < 0))
+                pos.y *= -1;
+
+            // Flip X if vertical orientation changed
+            if ((shouldFlipVertically && pos.x > 0) || (!shouldFlipVertically && pos.x < 0))
+                pos.x *= -1;
+
+            jumpingParticleSystem.transform.localPosition = pos;
+        }
+
         // Store current facing state for other gameplay logic
         isFacingRight = !shouldFlipHorizontally;
         isUpsideDown = shouldFlipVertically;
@@ -462,57 +464,15 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
     }
-    
-    private Vector2 GetGroundContactPosition()
-    {
-        CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
-        
-        // Get all contacts
-        ContactPoint2D[] contacts = new ContactPoint2D[10];
-        int contactCount = capsule.GetContacts(contacts);
-        
-        if (contactCount > 0)
-        {
-            // Find the lowest contact point (closest to ground)
-            Vector2 highestPoint = contacts[0].point;
-            for (int i = 1; i < contactCount; i++)
-            {
-                if (contacts[i].point.y > highestPoint.y)
-                {
-                    highestPoint = contacts[i].point;
-                }
-            }
-            return highestPoint;
-        }
-        
-        // Fallback: use bottom of collider
-        return (Vector2)transform.position + Vector2.down * (capsule.size.x * 0.5f);
-    }
-
-    private void SpawnParticles(Vector2 position, ParticleSystem particleSystem)
-    {
-        if (particleSystem != null)
-        {
-            // Offset slightly above the ground
-            Vector2 spawnPosition = position + Vector2.up * particleOffsetY;
-            spawnPosition.x = transform.position.x; // Keep the x position consistent with player
-            ParticleSystem spawnedParticles = Instantiate(particleSystem, spawnPosition, Quaternion.identity);
-
-            spawnedParticles.Play();
-        }
-    }
 
     private void PerformGroundJump()
     {
-        // Store the jump position before changing velocity
-        Vector2 jumpPosition = GetGroundContactPosition();
-
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, settings.jumpingPower);
 
         // Play jump sound
         PlaySound(jumpSound);
 
-        SpawnParticles(jumpPosition, landingParticleSystem);
+        jumpingParticleSystem.Play();
     }
     
     private void PerformWallJump()
