@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Effects")]
     [SerializeField] private ParticleSystem landingParticleSystem; // Assign a ParticleSystem in scene
-    [SerializeField] private float particleOffsetY = 0.5f;
+    [SerializeField] private float particleOffsetY = 0.0f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -142,18 +142,6 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalInputReleased = true;
         }
-
-        bool isGroundedNow = IsGrounded();
-        if (isGroundedNow && !wasGrounded && landSound != null)
-        {
-            Vector2 landPosition = GetGroundContactPosition();
-            SpawnParticles(landPosition, landingParticleSystem);
-
-            PlaySound(landSound);
-        }
-        wasGrounded = isGroundedNow;
-
-        animator.SetBool("Grounded", isGroundedNow);
     
         // Check for contacts
         CheckContacts();
@@ -163,10 +151,33 @@ public class PlayerMovement : MonoBehaviour
 
         // Handle flipping with our new logic
         HandleOrientation();
+        
+        bool isGroundedNow = IsGrounded();
+        if (isGroundedNow && !wasGrounded && landSound != null)
+        {
+            Vector2 landPosition;
+            if (isUpsideDown)
+            {
+                // If upside down, use the top contact point for landing
+                landPosition = topContact.contactPoint;
+            }
+            else
+            {
+                // Use the bottom contact point for landing
+                landPosition = bottomContact.contactPoint;
+            }
+
+            SpawnParticles(landPosition, landingParticleSystem);
+
+            PlaySound(landSound);
+        }
+        wasGrounded = isGroundedNow;
+
+        animator.SetBool("Grounded", isGroundedNow);
 
         // Update animation state
         UpdateAnimationState();
-        
+
         // Draw debug rays
         if (showDirectionVectors)
         {
@@ -455,13 +466,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 GetGroundContactPosition()
     {
         CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(platformLayer);
-        contactFilter.useTriggers = false;
         
         // Get all contacts
         ContactPoint2D[] contacts = new ContactPoint2D[10];
-        int contactCount = capsule.GetContacts(contactFilter, contacts);
+        int contactCount = capsule.GetContacts(contacts);
         
         if (contactCount > 0)
         {
@@ -478,7 +486,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // Fallback: use bottom of collider
-        return (Vector2)transform.position + Vector2.down * (capsule.size.y * 0.5f);
+        return (Vector2)transform.position + Vector2.down * (capsule.size.x * 0.5f);
     }
 
     private void SpawnParticles(Vector2 position, ParticleSystem particleSystem)
@@ -487,6 +495,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Offset slightly above the ground
             Vector2 spawnPosition = position + Vector2.up * particleOffsetY;
+            spawnPosition.x = transform.position.x; // Keep the x position consistent with player
             ParticleSystem spawnedParticles = Instantiate(particleSystem, spawnPosition, Quaternion.identity);
 
             spawnedParticles.Play();
