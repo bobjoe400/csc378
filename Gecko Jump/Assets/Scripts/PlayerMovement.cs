@@ -15,12 +15,12 @@ public class PlayerMovement : MonoBehaviour
     public bool showDirectionVectors = true;
     public bool showCollisionRays = true;
 
-      [Header("Animation")]
+    [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private string idleAnimParam = "Idle";
     [SerializeField] private string movingAnimParam = "Moving";
     [SerializeField] private string attackAnimParam = "Attack";
-    [SerializeField] private float attackAnimationDuration = 0.3f; // Match this with your animation length
+    [SerializeField] private float attackAnimationDuration = 0.3f; // Match this with your animation 
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;

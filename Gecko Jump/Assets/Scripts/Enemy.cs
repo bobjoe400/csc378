@@ -3,6 +3,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int health = 3;
+
+    [SerializeField] private GameObject lockedDoor;
+    [SerializeField] private GameObject unlockedDoor;
     
     // Add Animator reference
     [SerializeField] private Animator animator;
@@ -68,6 +71,16 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Death");
             // Wait for animation before destroying
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+        }
+
+        if (lockedDoor != null)
+        {
+            lockedDoor.SetActive(false);
+        }
+        
+        if (unlockedDoor != null)
+        {
+            unlockedDoor.SetActive(true);
         }
 
         PlaySound(deathSound);
