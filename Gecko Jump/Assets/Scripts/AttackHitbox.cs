@@ -8,11 +8,11 @@ public class AttackHitbox : MonoBehaviour
     public float knockbackForce = 5f;
     
     // Reference to parent player for access to direction info
-    private PlayerMovement player;
+    private PlayerController player;
     
     private void Awake()
     {
-        player = GetComponentInParent<PlayerMovement>();
+        player = GetComponentInParent<PlayerController>();
         // Start disabled - only enable during attack
         gameObject.SetActive(false);
     }
