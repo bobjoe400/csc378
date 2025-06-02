@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8937741810720188400}
   - component: {fileID: 3214869738663650325}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GeckoAudio
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,6 +487,7 @@ MonoBehaviour:
   attackHitbox: {fileID: 4371134090998194050}
   attackHitboxOffset: {x: 0.5, y: 0}
   characterSprite: {fileID: 4182935890696592310}
+  isFacingRight: 1
   pillLeft: {x: 0, y: 0}
   pillDown: {x: 0, y: 0}
   visualUp: {x: 0, y: 0}
@@ -536,9 +537,9 @@ GameObject:
   - component: {fileID: 7068875706616586515}
   - component: {fileID: 6449643585581537302}
   - component: {fileID: 8163041958894377450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackHitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,7 +631,7 @@ GameObject:
   - component: {fileID: 7164578288557348248}
   m_Layer: 9
   m_Name: DoorCollider
-  m_TagString: Player
+  m_TagString: DoorChecker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

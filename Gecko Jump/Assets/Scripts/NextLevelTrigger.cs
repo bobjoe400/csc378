@@ -6,12 +6,12 @@ public class NextLevelTrigger : MonoBehaviour
     [SerializeField] private string sceneToLoad;
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("DoorChecker"))
         {
             print("Player has entered the door trigger area.");
 
             SceneManager.LoadScene(sceneToLoad);
-            
+
         }
         else
         {
@@ -21,7 +21,7 @@ public class NextLevelTrigger : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("DoorChecker"))
         {
             print("Player has exited the door trigger area.");
         }

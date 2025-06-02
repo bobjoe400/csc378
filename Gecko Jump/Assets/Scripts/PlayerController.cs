@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer characterSprite;
     
     private float horizontal;
-    private bool isFacingRight = true;
-    private bool isUpsideDown = false;
+    public bool isFacingRight = true;
+    public bool isUpsideDown = false;
     private bool isWallJumping = false;
     private bool wasGrounded = false;
     private bool horizontalInputReleased = false;
