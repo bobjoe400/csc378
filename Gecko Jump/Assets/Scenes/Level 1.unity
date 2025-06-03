@@ -391,30 +391,10 @@ MonoBehaviour:
           y: 0
           z: 0
           w: 1
-    - Position:
-        x: 0
-        y: 0
-        z: 0
-      TangentIn:
-        x: 0
-        y: 0.00000047683716
-        z: -3.5089173
-      TangentOut:
-        x: 0
-        y: -0.00000047683716
-        z: 3.5089173
-      Rotation:
-        value:
-          x: 0.7318631
-          y: 0
-          z: 0
-          w: -0.68145174
     m_MetaData:
     - Mode: 3
       Tension: 0.5
     - Mode: 3
-      Tension: 0.5
-    - Mode: 4
       Tension: 0.5
     m_Closed: 0
     m_IntData:
@@ -770,6 +750,7 @@ MonoBehaviour:
   initialCameraSpeed: 0.1
   cameraReturnScalar: 2
   cameraHalfwayWait: 1
+  forward: 0
 --- !u!114 &182985564
 MonoBehaviour:
   m_ObjectHideFlags: 0
