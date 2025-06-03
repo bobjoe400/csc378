@@ -9,11 +9,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerSettings settings;
-    public Rigidbody2D rb;
-    public LayerMask platformLayer;
+    private Rigidbody2D rb;
+    [SerializeField] private LayerMask platformLayer;
 
-    public bool showDirectionVectors = true;
-    public bool showCollisionRays = true;
+    [Header("Debug Settings")]
+    [SerializeField] private bool showDirectionVectors = true;
+    [SerializeField] private bool showCollisionRays = true;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;

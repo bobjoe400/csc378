@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
 
     // Track if we're currently in hit stun
     private bool isInHitStun = false;
+    private bool isDead = false;
 
     private void Start()
     {
@@ -28,9 +29,11 @@ public class EnemyController : MonoBehaviour
             animator = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int amount, Vector2 knockbackForce)
+    public void TakeDamage(int amount)
     {
         health -= amount;
+
+        if (isDead) return; // Ignore damage if already dead
 
         // Play hit animation
         if (animator != null && !isInHitStun)
@@ -39,16 +42,8 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(HitStunRoutine());
         }
 
-        // Apply knockback
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero; // Reset velocity for consistent knockback
-            rb.AddForce(knockbackForce, ForceMode2D.Impulse);
-        }
-
         // Check if should die
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             Die();
         }
@@ -65,6 +60,7 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
+
         // Play death animation if available
         if (animator != null)
         {
@@ -84,6 +80,8 @@ public class EnemyController : MonoBehaviour
         }
 
         PlaySound(deathSound);
+        
+        isDead = true; // Prevent further damage
     }
 
     // Generic sound player method

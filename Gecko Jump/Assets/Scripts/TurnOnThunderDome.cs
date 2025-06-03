@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TurnOnThunderDome : MonoBehaviour
 {
-    public GameObject thunderDome;
+    [SerializeField] private GameObject thunderDome;
 
     void OnTriggerEnter2D(Collider2D collision)
     {

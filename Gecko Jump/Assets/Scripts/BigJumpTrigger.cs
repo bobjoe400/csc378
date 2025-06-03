@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 public class BigJumpTrigger : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public CinemachineCamera bigJumpCamera;
+    [SerializeField] private CinemachineCamera bigJumpCamera;
 
     [SerializeField] private float waitPeriod = 1.0f;
     [SerializeField] private float resetScalar = 2.0f;

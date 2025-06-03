@@ -4,8 +4,8 @@ using Unity.Cinemachine;
 public class SpawnGerald : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public CinemachineCamera cinemachineCamera;
-    public GameObject geraldPrefab; // Assign this in the inspector or load from Resources
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private GameObject geraldPrefab; // Assign this in the inspector or load from Resources
 
     void Start()
     {

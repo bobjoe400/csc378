@@ -6,13 +6,13 @@ using UnityEngine.InputSystem.Utilities;
 
 public class PreivewCameraController : MonoBehaviour
 {
-    public PlayerInput playerInput;
-    public float initialCameraSpeed = 0.2f; // Speed of the camera movement
-    public float cameraReturnScalar = 2.0f; // Speed at which the camera returns to the player
-    public float cameraStartWait = 0.2f; // Time to wait before starting the camera movement
-    public float cameraHalfwayWait = 1.0f; // Time to wait when the camera reaches halfway
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private float initialCameraSpeed = 0.2f; // Speed of the camera movement
+    [SerializeField] private float cameraReturnScalar = 2.0f; // Speed at which the camera returns to the player
+    [SerializeField] private float cameraStartWait = 0.2f; // Time to wait before starting the camera movement
+    [SerializeField] private float cameraHalfwayWait = 1.0f; // Time to wait when the camera reaches halfway
 
-    [SerializeField] private bool forward;
+    [SerializeField] private bool isMovingForward;
 
     private CinemachineSplineDolly dollyCamera;
     private CinemachineCamera cinemachineCamera;
@@ -35,12 +35,12 @@ public class PreivewCameraController : MonoBehaviour
     {
         if (dollyCamera != null)
         {
-            if (forward)
+            if (isMovingForward)
             {
                 if (dollyCamera.CameraPosition > 1.0f)
                 {
                     myFixedSpeed.Speed = 0.0f; // Stop the camera when it reaches the end
-                    forward = false; // Reverse direction when reaching the end
+                    isMovingForward = false; // Reverse direction when reaching the end
                     StartCoroutine(WaitForCameraToFinish()); // Wait before re-enabling player input
                 }
             }
@@ -67,7 +67,7 @@ public class PreivewCameraController : MonoBehaviour
 
         InputSystem.onAnyButtonPress.CallOnce(CancelCamera); // Listen for any input to cancel the camera movement
 
-        forward = true; // Set the direction to forward
+        isMovingForward = true; // Set the direction to forward
     }
 
     IEnumerator WaitForCameraToFinish()
@@ -78,7 +78,7 @@ public class PreivewCameraController : MonoBehaviour
 
     void CancelCamera(InputControl control)
     {
-        forward = false; // Disable forward movement when any input is detected
+        isMovingForward = false; // Disable forward movement when any input is detected
         dollyCamera.CameraPosition = 0.0f; // Reset camera position to the start
     }
 }

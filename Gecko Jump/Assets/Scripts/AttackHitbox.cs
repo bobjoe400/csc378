@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class AttackHitbox : MonoBehaviour
 {
-    public int damage = 1;
-    public float knockbackForce = 5f;
-    
-    // Reference to parent player for access to direction info
-    private PlayerController player;
+    [SerializeField] private int damage = 1;
     
     private void Awake()
     {
-        player = GetComponentInParent<PlayerController>();
-        // Start disabled - only enable during attack
         gameObject.SetActive(false);
     }
     
@@ -23,14 +17,11 @@ public class AttackHitbox : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // Get enemy component
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                // Get direction for knockback (based on player orientation)
-                Vector2 knockbackDir = player.visualRight.normalized;
-                
+            EnemyController enemy;
+            if((enemy = other.GetComponent<EnemyController>()) != null)
+            {   
                 // Apply damage and knockback
-                enemy.TakeDamage(damage, knockbackDir * knockbackForce);
+                enemy.TakeDamage(damage);
             }
         }
     }

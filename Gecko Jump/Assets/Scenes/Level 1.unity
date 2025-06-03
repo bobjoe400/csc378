@@ -751,7 +751,7 @@ MonoBehaviour:
   cameraReturnScalar: 2
   cameraStartWait: 0.2
   cameraHalfwayWait: 1
-  forward: 0
+  isMovingForward: 0
 --- !u!114 &182985564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8439,6 +8439,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1585348397582840543, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
+      propertyPath: lockedDoor
+      value: 
+      objectReference: {fileID: 763724500}
+    - target: {fileID: 1585348397582840543, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
+      propertyPath: unlockedDoor
+      value: 
+      objectReference: {fileID: 653347665}
     - target: {fileID: 1597868136912536309, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
       propertyPath: lockedDoor
       value: 
