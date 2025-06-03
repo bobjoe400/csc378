@@ -46,6 +46,9 @@ TagManager:
   - name: Shadows
     uniqueID: 1840809133
     locked: 0
+  - name: Props
+    uniqueID: 1741933527
+    locked: 0
   - name: Platforms
     uniqueID: 3693571619
     locked: 0

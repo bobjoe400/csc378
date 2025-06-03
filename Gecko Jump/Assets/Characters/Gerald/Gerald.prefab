@@ -488,6 +488,7 @@ MonoBehaviour:
   attackHitboxOffset: {x: 0.5, y: 0}
   characterSprite: {fileID: 4182935890696592310}
   isFacingRight: 1
+  isUpsideDown: 0
   pillLeft: {x: 0, y: 0}
   pillDown: {x: 0, y: 0}
   visualUp: {x: 0, y: 0}
