@@ -10,7 +10,6 @@ public class TurnOnThunderDome : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartCoroutine(EnableThunderDome()); // Start coroutine to enable the Thunder Dome   
-            Destroy(gameObject); // Destroy this trigger object to prevent reactivation
         }
     }
 
@@ -18,5 +17,6 @@ public class TurnOnThunderDome : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f); // Optional delay before enabling the Thunder Dome
         thunderDome.SetActive(true);
+        Destroy(gameObject); // Destroy this trigger object to prevent reactivatio
     }
 }
