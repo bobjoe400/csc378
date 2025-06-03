@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TurnOnThunderDome : MonoBehaviour
@@ -8,8 +9,14 @@ public class TurnOnThunderDome : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            thunderDome.SetActive(true); // Activate the Thunder Dome when player enters the trigger
+            StartCoroutine(EnableThunderDome()); // Start coroutine to enable the Thunder Dome   
             Destroy(gameObject); // Destroy this trigger object to prevent reactivation
         }
+    }
+
+    IEnumerator EnableThunderDome()
+    {
+        yield return new WaitForSeconds(0.2f); // Optional delay before enabling the Thunder Dome
+        thunderDome.SetActive(true);
     }
 }
