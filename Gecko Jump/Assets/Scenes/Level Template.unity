@@ -613,6 +613,7 @@ MonoBehaviour:
   playerInput: {fileID: 368685586}
   initialCameraSpeed: 0.1
   cameraReturnScalar: 2
+  cameraStartWait: 0.2
   cameraHalfwayWait: 1
   forward: 0
 --- !u!114 &288401152
@@ -2378,7 +2379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a2d752a61c0e64fbc4340caba008e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level 3
+  sceneToLoad: 
 --- !u!1 &1697607107
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,12 +2,14 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class PreivewCameraController : MonoBehaviour
 {
     public PlayerInput playerInput;
     public float initialCameraSpeed = 0.2f; // Speed of the camera movement
     public float cameraReturnScalar = 2.0f; // Speed at which the camera returns to the player
+    public float cameraStartWait = 0.2f; // Time to wait before starting the camera movement
     public float cameraHalfwayWait = 1.0f; // Time to wait when the camera reaches halfway
 
     [SerializeField] private bool forward;
@@ -23,13 +25,10 @@ public class PreivewCameraController : MonoBehaviour
         dollyCamera = GetComponent<CinemachineSplineDolly>();
         cinemachineCamera = GetComponent<CinemachineCamera>();
 
-        myFixedSpeed = new SplineAutoDolly.FixedSpeed{ Speed = initialCameraSpeed }; // Initialize fixed speed for automatic dolly movement
+        myFixedSpeed = new SplineAutoDolly.FixedSpeed { Speed = initialCameraSpeed }; // Initialize fixed speed for automatic dolly movement
         dollyCamera.AutomaticDolly.Method = myFixedSpeed;
 
-        cinemachineCamera.Priority = 11; // Set camera priority to ensure it is active
-        dollyCamera.AutomaticDolly.Enabled = true; // Enable automatic dolly movement
-        forward = true; // Start moving the camera forward
-        playerInput.enabled = false; // Disable player input to prevent interference
+        StartCoroutine(WaitForCameraToStart()); // Start the camera movement after a delay
     }
 
     void Update()
@@ -57,9 +56,29 @@ public class PreivewCameraController : MonoBehaviour
         }
     }
 
+    IEnumerator WaitForCameraToStart()
+    {
+        yield return new WaitForSeconds(cameraStartWait); // Optional delay before starting the camera movement
+
+        dollyCamera.AutomaticDolly.Enabled = true; // Enable automatic dolly movement
+        playerInput.enabled = false; // Disable player input while the camera is moving
+        cinemachineCamera.Priority = 11; // Set camera priority for the preview camera
+        myFixedSpeed.Speed = initialCameraSpeed; // Start moving the camera forward
+
+        InputSystem.onAnyButtonPress.CallOnce(CancelCamera); // Listen for any input to cancel the camera movement
+
+        forward = true; // Set the direction to forward
+    }
+
     IEnumerator WaitForCameraToFinish()
-    {   
+    {
         yield return new WaitForSeconds(cameraHalfwayWait); // Wait for 1 second before re-enabling player input
         myFixedSpeed.Speed = -1 * initialCameraSpeed * cameraReturnScalar; // Reset the camera speed
+    }
+
+    void CancelCamera(InputControl control)
+    {
+        forward = false; // Disable forward movement when any input is detected
+        dollyCamera.CameraPosition = 0.0f; // Reset camera position to the start
     }
 }
