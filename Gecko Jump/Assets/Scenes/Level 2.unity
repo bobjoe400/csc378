@@ -834,7 +834,7 @@ MonoBehaviour:
   cameraReturnScalar: 2
   cameraStartWait: 0.2
   cameraHalfwayWait: 1
-  forward: 0
+  isMovingForward: 0
 --- !u!114 &288401152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1334,6 +1334,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 382976058}
     m_Modifications:
+    - target: {fileID: 1585348397582840543, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
+      propertyPath: lockedDoor
+      value: 
+      objectReference: {fileID: 556664956}
+    - target: {fileID: 1585348397582840543, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
+      propertyPath: unlockedDoor
+      value: 
+      objectReference: {fileID: 2147053896}
     - target: {fileID: 1813789310932352808, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
       propertyPath: m_Name
       value: Enemy 3
@@ -1462,7 +1470,7 @@ MonoBehaviour:
     - Position:
         x: 7.8900146
         y: -6.018531
-        z: 11
+        z: 0
       TangentIn:
         x: 0
         y: 0
@@ -1474,13 +1482,13 @@ MonoBehaviour:
       Rotation:
         value:
           x: 0.49829626
-          y: -0.5016978
-          z: 0.50169784
-          w: -0.49829644
+          y: -0.5016977
+          z: 0.5016978
+          w: -0.49829656
     - Position:
         x: 12.117214
         y: 1.5006437
-        z: 11
+        z: 0
       TangentIn:
         x: 0
         y: 0
@@ -1498,7 +1506,7 @@ MonoBehaviour:
     - Position:
         x: 19.35582
         y: 3.6890612
-        z: 11
+        z: 0
       TangentIn:
         x: 0
         y: 0
@@ -1516,7 +1524,7 @@ MonoBehaviour:
     - Position:
         x: 20.515469
         y: 23.235172
-        z: 11
+        z: 0
       TangentIn:
         x: 0
         y: 0
@@ -1527,28 +1535,28 @@ MonoBehaviour:
         z: 3.0490499
       Rotation:
         value:
-          x: -0.50305766
-          y: 0.4969234
-          z: -0.4969235
-          w: 0.5030577
+          x: 0.5030576
+          y: -0.4969235
+          z: 0.49692383
+          w: -0.5030575
     - Position:
-        x: 51.583023
+        x: 50
         y: 23.344936
-        z: 11
+        z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -3.1067748
+        z: -2.9484737
       TangentOut:
         x: 0
         y: 0
-        z: 3.1067748
+        z: 2.9484737
       Rotation:
         value:
-          x: -0.5008825
-          y: 0.49911594
-          z: -0.49911594
-          w: 0.50088245
+          x: 0.5009299
+          y: -0.49906838
+          z: 0.4990685
+          w: -0.5009298
     m_MetaData:
     - Mode: 2
       Tension: 0.5
@@ -1758,6 +1766,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1 &556664956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1688881638449150, guid: 5808ca7cfa9bad240b1c2c52003f4817, type: 3}
+  m_PrefabInstance: {fileID: 22421707}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &579013514
 GameObject:
   m_ObjectHideFlags: 0
@@ -23983,7 +23996,7 @@ PolygonCollider2D:
       - {x: 59, y: 25}
       - {x: 59, y: 32}
       - {x: 17, y: 32}
-      - {x: 17, y: 11}
+      - {x: 15.5, y: 11}
       - {x: 8, y: 9}
       - {x: -6, y: 9}
       - {x: -6, y: 3}
@@ -23998,7 +24011,7 @@ Transform:
   m_GameObject: {fileID: 965988261}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4499998, y: -5.12, z: 11}
+  m_LocalPosition: {x: -1.4499998, y: -5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36618,6 +36631,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 975134596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2147053896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1013917086529220, guid: d10cbe6b249ddc34db2eae14d2ae9f3d, type: 3}
+  m_PrefabInstance: {fileID: 1053328293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
