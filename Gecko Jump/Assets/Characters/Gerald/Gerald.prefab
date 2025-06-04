@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 5277b38a46d255b44b05bb1fc839c4e6, type: 2}
+  playerStats: {fileID: 11400000, guid: 19543551aa789084ca6065195fc75d25, type: 2}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1024

@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int health = 3;
+    [SerializeField] private int damage = 1;
+    public int Damage => damage;
 
     [SerializeField] private GameObject lockedDoor;
     [SerializeField] private GameObject unlockedDoor;

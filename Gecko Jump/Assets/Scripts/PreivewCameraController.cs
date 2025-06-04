@@ -7,28 +7,31 @@ using UnityEngine.InputSystem.Utilities;
 public class PreivewCameraController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private float initialCameraSpeed = 0.2f; // Speed of the camera movement
-    [SerializeField] private float cameraReturnScalar = 2.0f; // Speed at which the camera returns to the player
-    [SerializeField] private float cameraStartWait = 0.2f; // Time to wait before starting the camera movement
-    [SerializeField] private float cameraHalfwayWait = 1.0f; // Time to wait when the camera reaches halfway
+    [SerializeField] private float initialCameraSpeed = 0.2f;
+    [SerializeField] private float cameraReturnScalar = 2.0f;
+    [SerializeField] private float cameraStartWait = 0.2f;
+    [SerializeField] private float cameraHalfwayWait = 1.0f;
+    
+    [Header("Skip UI")]
+    [SerializeField] private HoldToSkipSlider holdToSkipSlider; // Reference to your skip slider
 
     [SerializeField] private bool isMovingForward;
 
     private CinemachineSplineDolly dollyCamera;
     private CinemachineCamera cinemachineCamera;
-
     private SplineAutoDolly.FixedSpeed myFixedSpeed;
-
 
     void Start()
     {
         dollyCamera = GetComponent<CinemachineSplineDolly>();
         cinemachineCamera = GetComponent<CinemachineCamera>();
 
-        myFixedSpeed = new SplineAutoDolly.FixedSpeed { Speed = initialCameraSpeed }; // Initialize fixed speed for automatic dolly movement
+        myFixedSpeed = new SplineAutoDolly.FixedSpeed { Speed = initialCameraSpeed };
         dollyCamera.AutomaticDolly.Method = myFixedSpeed;
 
-        StartCoroutine(WaitForCameraToStart()); // Start the camera movement after a delay
+        playerInput.enabled = false;
+
+        StartCoroutine(WaitForCameraToStart());
     }
 
     void Update()
@@ -39,18 +42,14 @@ public class PreivewCameraController : MonoBehaviour
             {
                 if (dollyCamera.CameraPosition > 1.0f)
                 {
-                    myFixedSpeed.Speed = 0.0f; // Stop the camera when it reaches the end
-                    isMovingForward = false; // Reverse direction when reaching the end
-                    StartCoroutine(WaitForCameraToFinish()); // Wait before re-enabling player input
+                    StartCoroutine(WaitAtHalfway());
                 }
             }
             else
             {
-                if (dollyCamera.CameraPosition <= 0.0f)
+                if (dollyCamera.CameraPosition < 0.0f)
                 {
-                    dollyCamera.AutomaticDolly.Enabled = false; // Enable automatic dolly movement
-                    playerInput.enabled = true; // Re-enable player input when the camera returns to the start
-                    cinemachineCamera.Priority = 9; // Reset camera priority
+                    CancelCamera();
                 }
             }
         }
@@ -58,27 +57,40 @@ public class PreivewCameraController : MonoBehaviour
 
     IEnumerator WaitForCameraToStart()
     {
-        yield return new WaitForSeconds(cameraStartWait); // Optional delay before starting the camera movement
+        yield return new WaitForSeconds(cameraStartWait);
 
-        dollyCamera.AutomaticDolly.Enabled = true; // Enable automatic dolly movement
-        playerInput.enabled = false; // Disable player input while the camera is moving
-        cinemachineCamera.Priority = 11; // Set camera priority for the preview camera
-        myFixedSpeed.Speed = initialCameraSpeed; // Start moving the camera forward
+        dollyCamera.AutomaticDolly.Enabled = true;
+        cinemachineCamera.Priority = 11;
+        myFixedSpeed.Speed = initialCameraSpeed;
 
-        InputSystem.onAnyButtonPress.CallOnce(CancelCamera); // Listen for any input to cancel the camera movement
+        // Show the skip UI and enable skipping
+        if (holdToSkipSlider != null)
+        {
+            holdToSkipSlider.ShowSkipUI();
+            holdToSkipSlider.onSkipComplete += CancelCamera; // Subscribe to skip completion
+        }
 
-        isMovingForward = true; // Set the direction to forward
+        isMovingForward = true;
     }
 
-    IEnumerator WaitForCameraToFinish()
-    {
-        yield return new WaitForSeconds(cameraHalfwayWait); // Wait for 1 second before re-enabling player input
-        myFixedSpeed.Speed = -1 * initialCameraSpeed * cameraReturnScalar; // Reset the camera speed
+    IEnumerator WaitAtHalfway()
+    {   
+        myFixedSpeed.Speed = 0.0f;
+        isMovingForward = false;
+        yield return new WaitForSeconds(cameraHalfwayWait);
+        myFixedSpeed.Speed = -1 * initialCameraSpeed * cameraReturnScalar;
     }
-
-    void CancelCamera(InputControl control)
+    void CancelCamera()
     {
-        isMovingForward = false; // Disable forward movement when any input is detected
-        dollyCamera.CameraPosition = 0.0f; // Reset camera position to the start
+        dollyCamera.AutomaticDolly.Enabled = false;
+        playerInput.enabled = true;
+        cinemachineCamera.Priority = 9;
+
+        // Hide the skip UI when camera movement is complete
+        if (holdToSkipSlider != null)
+        {
+            holdToSkipSlider.HideSkipUI();
+            holdToSkipSlider.onSkipComplete -= CancelCamera;
+        }
     }
 }

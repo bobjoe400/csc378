@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerSettings", menuName = "Game/Player Settings")]
 public class PlayerSettings : ScriptableObject
 {
+    [Header("Player Configuration")]
+    public float respawnTime = 0.5f; // Time to wait before respawning
+
     [Header("Basic Movement")]
     [Range(1f, 20f)]
     public float speed = 8f;

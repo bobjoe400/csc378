@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerSettings settings;
+    public PlayerStats playerStats;
+    public SpawnPoint spawnPoint; // Reference to the spawn point for respawning
     private Rigidbody2D rb;
     [SerializeField] private LayerMask platformLayer;
 
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
         public bool isWallJumping;
         public bool wasGrounded;
     }
-    
+
     [Header("Movement States")]
     [SerializeField] private MovementState movementState;
 
@@ -89,18 +91,18 @@ public class PlayerController : MonoBehaviour
         public bool isInContact;      // Whether we're in contact with something
         public bool isGround;         // Is this a ground-like surface (based on angle)
         public bool isWall;           // Is this a wall-like surface (based on angle)
-        
+
         [Header("Contact Data")]
         public Vector2 contactNormal; // Normal of the contact surface
         public Vector2 contactPoint;  // Point of contact
         public float contactDistance; // Distance to the contact
         public float dotProduct;      // Dot product with up (could add this for debugging)
-        
+
         public ContactInfo()
         {
             Reset();
         }
-        
+
         public void Reset()
         {
             isInContact = false;
@@ -119,11 +121,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ContactInfo rightContact = new ContactInfo();
     [SerializeField] private ContactInfo topContact = new ContactInfo();
     [SerializeField] private ContactInfo bottomContact = new ContactInfo();
-        
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
+        if (playerStats != null)
+        {
+            // Ensure player stats are initialized
+            if (playerStats.health <= 0)
+            {
+                playerStats.health = playerStats.maxHealth; // Reset health to max if not set
+            }
+        }
+
         // Store the initial hitbox position relative to the player
         if (attackHitbox != null)
         {
@@ -139,18 +150,18 @@ public class PlayerController : MonoBehaviour
 
         if (audioSettings.audioSource == null)
             audioSettings.audioSource = gameObject.AddComponent<AudioSource>();
-            
+
         // Initialize direction vectors
         UpdateDirectionVectors();
     }
-    
+
     void Update()
     {
         // Update direction vectors first
         UpdateDirectionVectors();
 
         UpdateHitboxPosition();
-        
+
         // Apply horizontal movement
         if (!movementState.isWallJumping || movementState.horizontalInputReleased)
         {
@@ -161,7 +172,7 @@ public class PlayerController : MonoBehaviour
         {
             movementState.horizontalInputReleased = true;
         }
-    
+
         // Check for contacts
         CheckContacts();
 
@@ -170,13 +181,13 @@ public class PlayerController : MonoBehaviour
 
         // Handle flipping with our new logic
         HandleOrientation();
-        
+
         bool isGroundedNow = IsGrounded();
         if (isGroundedNow && !movementState.wasGrounded && audioSettings.landSound != null)
         {
             PlaySound(audioSettings.landSound);
         }
-        
+
         movementState.wasGrounded = isGroundedNow;
 
         animator.SetBool("Grounded", isGroundedNow);
@@ -198,10 +209,10 @@ public class PlayerController : MonoBehaviour
         // Set movement animation
         bool isMoving = Mathf.Abs(movementState.horizontal) > 0.1f;
         animator.SetBool(movingAnimParam, isMoving && !attackState.isAttacking);
-        
+
         // Idle is handled by transitions in the Animator
         animator.SetBool(idleAnimParam, !isMoving && !attackState.isAttacking);
-        
+
         // Attack is triggered via the Attack method
     }
 
@@ -210,18 +221,18 @@ public class PlayerController : MonoBehaviour
         // Get the pill's actual transform directions
         visualState.pillLeft = transform.up;
         visualState.pillDown = transform.right;
-        
+
         // Get a vector pointing upward relative to screen
         Vector2 approximateUp = -visualState.pillDown;
-        
+
         // Calculate the raw angle between world up and the pill's "up"
         visualState.realAngle = Vector2.SignedAngle(Vector2.up, approximateUp);
-        
+
         // Adjust angle to ensure it represents the shortest rotation to get the pill upright
         if (visualState.realAngle > 90f)
         {
             visualState.visualAngle = 180f - visualState.realAngle;
-        } 
+        }
         else if (visualState.realAngle < -90f)
         {
             visualState.visualAngle = -180f - visualState.realAngle;
@@ -230,18 +241,18 @@ public class PlayerController : MonoBehaviour
         {
             visualState.visualAngle = visualState.realAngle;
         }
-        
+
         // Create the visual up vector that's always pointing generally upward
         visualState.visualUp = Quaternion.Euler(0, 0, visualState.visualAngle) * Vector2.up;
-        
+
         // IMPORTANT: Visual right should follow actual movement direction
         // Not just based on the pill's rotation
-        visualState.visualRight = Quaternion.Euler(0, 0, visualState.visualAngle) * 
-                    (movementState.horizontal > 0 ? Vector2.right : 
-                    (movementState.horizontal < 0 ? Vector2.left : 
+        visualState.visualRight = Quaternion.Euler(0, 0, visualState.visualAngle) *
+                    (movementState.horizontal > 0 ? Vector2.right :
+                    (movementState.horizontal < 0 ? Vector2.left :
                     (visualState.isFacingRight ? Vector2.right : Vector2.left)));
     }
-    
+
     // Draw debug rays to visualize the vectors
     // Draw debug rays to visualize the vectors with clear color coding
     private void DrawDebugDirections()
@@ -252,11 +263,11 @@ public class PlayerController : MonoBehaviour
         // Pill's actual local axes
         Debug.DrawRay(transform.position + localOffset, visualState.pillLeft * 0.5f, Color.magenta);    // Points to player's RIGHT
         Debug.DrawRay(transform.position + localOffset, visualState.pillDown * 0.5f, Color.yellow);  // Points to player's DOWN
-        
+
         // Corrected visual directions
         Debug.DrawRay(transform.position, visualState.visualUp * 0.5f, Color.green);         // Points UPWARD on screen
         Debug.DrawRay(transform.position, visualState.visualRight * 0.5f, Color.red);        // Points RIGHT/LEFT based on facing
-        
+
         // World directions for reference
         Debug.DrawRay(transform.position + worldOffset, Vector2.up * 0.3f, new Color(0, 0.5f, 0));      // World up
         Debug.DrawRay(transform.position + worldOffset, Vector2.right * 0.3f, new Color(0.5f, 0, 0));   // World right
@@ -269,36 +280,36 @@ public class PlayerController : MonoBehaviour
         rightContact.Reset();
         topContact.Reset();
         bottomContact.Reset();
-        
+
         // Get collider size
         CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
         float width = capsule.size.y;
         float height = capsule.size.x;
-        
+
         // Get ray settings from settings object
         int rayCount = settings.numberOfRays;
         float edgeInset = settings.edgeInsetFactor;
 
         float sizeRatio = transform.localScale.y / transform.localScale.x;
-        
+
         // Distance from center along each axis for ray starting positions
         float longEdgeOffset = height * settings.longEdgeOffsetFactor * 0.5f;
         float shortEdgeOffset = width * settings.shortEdgeOffsetFactor * sizeRatio * 0.5f;
-        
+
         // Calculate the distribution widths
         float leftRightDistWidth = width * settings.longEdgeWidthFactor;
         float topBottomDistHeight = height * settings.shortEdgeWidthFactor;
-        
+
         // Calculate ray distribution ranges with inset
         float topBottomStartX = -(topBottomDistHeight * 0.5f) + (height * edgeInset);
         float topBottomEndX = (topBottomDistHeight * 0.5f) - (height * edgeInset);
-        
+
         float leftRightStartY = -(leftRightDistWidth * 0.5f) + (width * edgeInset);
         float leftRightEndY = (leftRightDistWidth * 0.5f) - (width * edgeInset);
-        
+
         // IMPORTANT: We still use the pill's actual axes for ray casting
         // because the physics follow the pill's orientation
-        
+
         // TOP edge rays
         for (int i = 0; i < rayCount; i++)
         {
@@ -307,7 +318,7 @@ public class PlayerController : MonoBehaviour
             Vector2 startPos = (Vector2)transform.position - visualState.pillDown * longEdgeOffset + visualState.pillLeft * yOffset;
             CastRay(startPos, -visualState.pillDown, topContact);
         }
-        
+
         // BOTTOM edge rays
         for (int i = 0; i < rayCount; i++)
         {
@@ -316,7 +327,7 @@ public class PlayerController : MonoBehaviour
             Vector2 startPos = (Vector2)transform.position + visualState.pillDown * longEdgeOffset + visualState.pillLeft * yOffset;
             CastRay(startPos, visualState.pillDown, bottomContact);
         }
-        
+
         // LEFT edge rays
         for (int i = 0; i < rayCount; i++)
         {
@@ -325,7 +336,7 @@ public class PlayerController : MonoBehaviour
             Vector2 startPos = (Vector2)transform.position + visualState.pillLeft * shortEdgeOffset + visualState.pillDown * xOffset;
             CastRay(startPos, visualState.pillLeft, leftContact);
         }
-        
+
         // RIGHT edge rays
         for (int i = 0; i < rayCount; i++)
         {
@@ -335,31 +346,31 @@ public class PlayerController : MonoBehaviour
             CastRay(startPos, -visualState.pillLeft, rightContact);
         }
     }
-    
+
     private void CastRay(Vector2 start, Vector2 direction, ContactInfo contactInfo)
     {
         RaycastHit2D hit = Physics2D.Raycast(start, direction, settings.rayLength, platformLayer);
-        
+
         if (showCollisionRays)
         {
             Color rayColor = hit.collider != null ? Color.green : Color.red;
             Debug.DrawRay(start, direction * settings.rayLength, rayColor);
         }
-        
+
         if (hit.collider != null && hit.distance < contactInfo.contactDistance)
         {
             contactInfo.isInContact = true;
             contactInfo.contactNormal = hit.normal;
             contactInfo.contactPoint = hit.point;
             contactInfo.contactDistance = hit.distance;
-            
+
             // Use world up for consistent ground detection
             float upDot = Vector2.Dot(hit.normal, Vector2.up);
             contactInfo.isGround = upDot > settings.groundAngleThreshold;
             contactInfo.isWall = Mathf.Abs(upDot) < settings.wallAngleThreshold;
         }
     }
-    
+
     private void HandleOrientation()
     {
         // Calculate the angle difference
@@ -368,7 +379,7 @@ public class PlayerController : MonoBehaviour
         // Add hysteresis to prevent flickering near threshold
         // Only change vertical orientation when clearly beyond threshold
         bool shouldFlipVertically = visualState.isUpsideDown; // Start with current state
-        
+
         // Only change vertical flipping state when we're clearly beyond the threshold
         if (angleDifference > 110f && !visualState.isUpsideDown)
         {
@@ -378,23 +389,23 @@ public class PlayerController : MonoBehaviour
         {
             shouldFlipVertically = false;
         }
-        
+
         // Determine horizontal orientation based on movement and visual vectors
         bool shouldFlipHorizontally = !visualState.isFacingRight; // Start with current state
-        
+
         // Only change horizontal orientation on clear input
         if (Mathf.Abs(movementState.horizontal) > 0.1f)
         {
             // Base horizontal orientation on movement direction
             shouldFlipHorizontally = movementState.horizontal < 0;
-            
+
             // When upside down on ground, invert horizontal orientation
             if (shouldFlipVertically)
             {
                 shouldFlipHorizontally = !shouldFlipHorizontally;
             }
         }
-        
+
         // Special case for wall contact - completely override orientation
         if (IsOnWall())
         {
@@ -402,21 +413,21 @@ public class PlayerController : MonoBehaviour
             Vector2 wallNormal = Vector2.zero;
             bool isTopContact = topContact.isWall;
             bool isBottomContact = bottomContact.isWall;
-            
+
             if (isTopContact) wallNormal = topContact.contactNormal;
             else if (isBottomContact) wallNormal = bottomContact.contactNormal;
-            
+
             // Determine if this is a left or right wall
             bool isRightWall = Vector2.Dot(wallNormal, Vector2.left) > 0;
-            
+
             // COMPLETELY REVISED WALL ORIENTATION LOGIC
             // We know which edge is touching the wall (top or bottom)
             // and which way the wall is facing (left or right)
-            
+
             // 1. Set horizontal orientation based on wall direction
             // Character should face away from wall
             shouldFlipHorizontally = (!isRightWall && isBottomContact) || (isRightWall && isTopContact); // On right wall, face left
-            
+
             // 2. For vertical orientation, we need to check which edge is touching
             if (isTopContact)
             {
@@ -461,13 +472,13 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         movementState.horizontal = context.ReadValue<Vector2>().x;
-        
+
         if (movementState.isWallJumping && movementState.horizontalInputReleased && movementState.horizontal != 0)
         {
             movementState.isWallJumping = false;
         }
     }
-    
+
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && IsGrounded())
@@ -478,7 +489,7 @@ public class PlayerController : MonoBehaviour
         {
             PerformWallJump();
         }
-        
+
         if (context.canceled && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
@@ -494,53 +505,53 @@ public class PlayerController : MonoBehaviour
 
         jumpingParticleSystem.Play();
     }
-    
+
     private void PerformWallJump()
     {
         Vector2 wallNormal = GetWallJumpNormal();
-        
+
         if (wallNormal == Vector2.zero)
             return;
-            
+
         rb.linearVelocity = Vector2.zero;
         Vector2 jumpDirection = wallNormal * settings.wallJumpDirectionPower + Vector2.up * settings.wallJumpPower;
         rb.AddForce(jumpDirection, ForceMode2D.Impulse);
-        
+
         movementState.isWallJumping = true;
         movementState.horizontalInputReleased = false;
-        
+
         // Play jump sound
         PlaySound(audioSettings.jumpSound);
 
         StartCoroutine(PreventWallStick());
     }
-    
+
     private Vector2 GetWallJumpNormal()
-    {   
+    {
         if (math.abs(movementState.horizontal) == 0)
             return Vector2.zero;
 
         if (topContact.isWall)
             return topContact.contactNormal;
-            
+
         if (bottomContact.isWall)
             return bottomContact.contactNormal;
-            
+
         return Vector2.zero;
     }
-    
+
     private IEnumerator PreventWallStick()
     {
         yield return new WaitForSeconds(settings.wallJumpCooldown);
         yield return new WaitForSeconds(0.1f);
         movementState.isWallJumping = false;
     }
-    
+
     public bool IsGrounded()
     {
         return bottomContact.isGround || topContact.isGround || leftContact.isGround || rightContact.isGround;
     }
-    
+
     public bool IsOnWall()
     {
         return (topContact.isWall || bottomContact.isWall) && !IsGrounded();
@@ -564,13 +575,13 @@ public class PlayerController : MonoBehaviour
             attackHitbox.SetActive(true);
             animator.SetTrigger(attackAnimParam);
         }
-        
+
         // Wait for attack duration
         yield return new WaitForSeconds(settings.attackAnimationDuration);
 
         if (attackHitbox != null)
             attackHitbox.SetActive(false);
-        
+
         attackState.isAttacking = false;
     }
 
@@ -580,21 +591,21 @@ public class PlayerController : MonoBehaviour
         {
             // Start with the initial offset
             Vector2 offset = attackState.initialHitboxOffset;
-            
+
             // Adjust based on facing direction
             if (!visualState.isFacingRight)
             {
                 // Mirror the offset when facing left
                 offset.y = -offset.y;
             }
-            
+
             // Apply offset and rotational adjustments if necessary
             if (visualState.isUpsideDown)
             {
                 // When upside down, adjust the offset accordingly
                 offset.x = -offset.x;
             }
-            
+
             // Set the local position to maintain proper relative positioning
             attackHitbox.transform.localPosition = offset;
         }
@@ -620,5 +631,41 @@ public class PlayerController : MonoBehaviour
         {
             audioSettings.audioSource.PlayOneShot(clip, settings.soundVolume);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Handle collision with enemy
+            TakeDamage(collision.gameObject.GetComponent<EnemyController>().Damage);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        if (playerStats == null) return;
+
+        playerStats.health -= damage;
+        if (playerStats.health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Handle player death logic here
+        Debug.Log("Player has died!");
+        // You can add respawn logic, game over screen, etc.
+        // For now, just disable the player
+        gameObject.SetActive(false);
+
+        if (spawnPoint != null)
+        {
+            spawnPoint.InitiateRespawn();
+        }
+
+        Destroy(gameObject);
     }
 }

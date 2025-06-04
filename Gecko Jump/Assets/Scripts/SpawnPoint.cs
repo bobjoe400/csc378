@@ -1,18 +1,25 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Collections;
 
-public class SpawnGerald : MonoBehaviour
+public class SpawnPoint : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private GameObject geraldPrefab; // Assign this in the inspector or load from Resources
 
-    void Start()
+    public void InitiateRespawn()
     {
-        CreateGerald();
+        // Start the coroutine to respawn Gerald
+        StartCoroutine(Respawn());
     }
 
-    void CreateGerald()
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(geraldPrefab.settings.respawnTime); // Wait a frame to ensure the scene is fully loaded
+        CreateGerald();
+    }
+    public void CreateGerald()
     {
         // Find the GameObject with the tag "Gerald"
         GameObject gerald = GameObject.FindGameObjectWithTag("Player");
