@@ -466,7 +466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 5277b38a46d255b44b05bb1fc839c4e6, type: 2}
-  rb: {fileID: 814486076209374833}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -476,25 +475,32 @@ MonoBehaviour:
   idleAnimParam: Idle
   movingAnimParam: Moving
   attackAnimParam: Attack
-  attackAnimationDuration: 0.3
   jumpingParticleSystem: {fileID: 6866166026689352578}
-  audioSource: {fileID: 3214869738663650325}
-  jumpSound: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
-  landSound: {fileID: 8300000, guid: eaae8fe8d600e1f459f34aa5757fa3b8, type: 3}
-  attackSound: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
-  footstepSound: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
-  soundVolume: 1
+  audioSettings:
+    audioSource: {fileID: 3214869738663650325}
+    jumpSound: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
+    landSound: {fileID: 8300000, guid: eaae8fe8d600e1f459f34aa5757fa3b8, type: 3}
+    attackSound: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
+    footstepSound: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
   attackHitbox: {fileID: 4371134090998194050}
-  attackHitboxOffset: {x: 0.5, y: 0}
+  attackState:
+    isAttacking: 0
+    initialHitboxOffset: {x: 0, y: 0}
   characterSprite: {fileID: 4182935890696592310}
-  isFacingRight: 1
-  isUpsideDown: 0
-  pillLeft: {x: 0, y: 0}
-  pillDown: {x: 0, y: 0}
-  visualUp: {x: 0, y: 0}
-  visualRight: {x: 0, y: 0}
-  realAngle: 0
-  visualAngle: 0
+  visualState:
+    isFacingRight: 0
+    isUpsideDown: 0
+    pillLeft: {x: 0, y: 0}
+    pillDown: {x: 0, y: 0}
+    visualUp: {x: 0, y: 0}
+    visualRight: {x: 0, y: 0}
+    realAngle: 0
+    visualAngle: 0
+  movementState:
+    horizontal: 0
+    horizontalInputReleased: 0
+    isWallJumping: 0
+    wasGrounded: 0
   leftContact:
     isInContact: 0
     isGround: 0
@@ -619,7 +625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  knockbackForce: 5
 --- !u!1 &5603878317140772844
 GameObject:
   m_ObjectHideFlags: 0
