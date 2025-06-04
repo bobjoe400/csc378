@@ -21,50 +21,69 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private string idleAnimParam = "Idle";
     [SerializeField] private string movingAnimParam = "Moving";
     [SerializeField] private string attackAnimParam = "Attack";
-    [SerializeField] private float attackAnimationDuration = 0.3f; // Match this with your animation 
 
     [Header("Player Effects")]
     [SerializeField] private ParticleSystem jumpingParticleSystem; // Assign a ParticleSystem in scene
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip jumpSound;
-    [SerializeField] private AudioClip landSound;
-    [SerializeField] private AudioClip attackSound;
-    [SerializeField] private AudioClip footstepSound;
-    [SerializeField] [Range(0f, 1f)] private float soundVolume = 1f;
+    [System.Serializable]
+    private class AudioSettings
+    {
+        public AudioSource audioSource;
+        public AudioClip jumpSound;
+        public AudioClip landSound;
+        public AudioClip attackSound;
+        public AudioClip footstepSound;
+    }
 
+    [Header("Audio")]
+    [SerializeField] private AudioSettings audioSettings = new AudioSettings();
+
+
+    [System.Serializable]
+    private class AttackState
+    {
+        public bool isAttacking;
+        public Vector2 initialHitboxOffset;
+    }
     // Add to your PlayerMovement class
     [Header("Attack Settings")]
-    [SerializeField] public GameObject attackHitbox;
-    [SerializeField] public Vector2 attackHitboxOffset = new Vector2(0.5f, 0); // Default offset
-    private Vector2 initialHitboxOffset; // Store the initial relative position
-    private bool isAttacking = false;
+    [SerializeField] private GameObject attackHitbox;
+    public GameObject AttackHitbox => attackHitbox;
+    [SerializeField] private AttackState attackState;
 
+
+    [System.Serializable]
+    private class VisualState
+    {
+        public bool isFacingRight;
+        public bool isUpsideDown;
+        public Vector2 pillLeft;
+        public Vector2 pillDown;
+        public Vector2 visualUp;
+        public Vector2 visualRight;
+        public float realAngle;
+        public float visualAngle;
+    }
     [Header("Visual Settings")]
     [SerializeField] private SpriteRenderer characterSprite;
-    
-    private float horizontal;
-    public bool isFacingRight = true;
-    public bool isUpsideDown = false;
-    private bool isWallJumping = false;
-    private bool wasGrounded = false;
-    private bool horizontalInputReleased = false;
-    
- // RENAMED direction vectors with correct semantic meaning
-    [Header("Direction Vectors")]
-    [SerializeField] private Vector2 pillLeft;    // transform.up (points to player's RIGHT)
-    [SerializeField] private Vector2 pillDown; // transform.right (points to player's DOWN)
-    
-    [SerializeField] private Vector2 visualUp;    // Corrected vector pointing UPWARD on screen
-    [SerializeField] public Vector2 visualRight; // Corrected vector pointing RIGHT/LEFT based on facing
-    [SerializeField] private float realAngle; // Angle of the pill's orientation
-    [SerializeField] private float visualAngle; // Angle of the visual up vector
+    [SerializeField] private VisualState visualState;
 
+
+    [System.Serializable]
+    public class MovementState
+    {
+        public float horizontal;
+        public bool horizontalInputReleased;
+        public bool isWallJumping;
+        public bool wasGrounded;
+    }
+    
+    [Header("Movement States")]
+    [SerializeField] private MovementState movementState;
 
     // Add the Serializable attribute to make ContactInfo visible in the Inspector
     [System.Serializable]
-    public class ContactInfo
+    private class ContactInfo
     {
         [Header("Contact State")]
         public bool isInContact;      // Whether we're in contact with something
@@ -108,7 +127,7 @@ public class PlayerController : MonoBehaviour
         // Store the initial hitbox position relative to the player
         if (attackHitbox != null)
         {
-            initialHitboxOffset = attackHitbox.transform.localPosition;
+            attackState.initialHitboxOffset = attackHitbox.transform.localPosition;
             attackHitbox.SetActive(false); // Ensure it starts inactive
         }
 
@@ -118,8 +137,8 @@ public class PlayerController : MonoBehaviour
         if (characterSprite == null)
             characterSprite = GetComponentInChildren<SpriteRenderer>();
 
-        if (audioSource == null)
-            audioSource = gameObject.AddComponent<AudioSource>();
+        if (audioSettings.audioSource == null)
+            audioSettings.audioSource = gameObject.AddComponent<AudioSource>();
             
         // Initialize direction vectors
         UpdateDirectionVectors();
@@ -133,14 +152,14 @@ public class PlayerController : MonoBehaviour
         UpdateHitboxPosition();
         
         // Apply horizontal movement
-        if (!isWallJumping || horizontalInputReleased)
+        if (!movementState.isWallJumping || movementState.horizontalInputReleased)
         {
-            rb.linearVelocity = new Vector2(horizontal * settings.speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(movementState.horizontal * settings.speed, rb.linearVelocity.y);
         }
 
-        if (isWallJumping && horizontal == 0)
+        if (movementState.isWallJumping && movementState.horizontal == 0)
         {
-            horizontalInputReleased = true;
+            movementState.horizontalInputReleased = true;
         }
     
         // Check for contacts
@@ -153,12 +172,12 @@ public class PlayerController : MonoBehaviour
         HandleOrientation();
         
         bool isGroundedNow = IsGrounded();
-        if (isGroundedNow && !wasGrounded && landSound != null)
+        if (isGroundedNow && !movementState.wasGrounded && audioSettings.landSound != null)
         {
-            PlaySound(landSound);
+            PlaySound(audioSettings.landSound);
         }
         
-        wasGrounded = isGroundedNow;
+        movementState.wasGrounded = isGroundedNow;
 
         animator.SetBool("Grounded", isGroundedNow);
 
@@ -177,11 +196,11 @@ public class PlayerController : MonoBehaviour
         if (animator == null) return;
 
         // Set movement animation
-        bool isMoving = Mathf.Abs(horizontal) > 0.1f;
-        animator.SetBool(movingAnimParam, isMoving && !isAttacking);
+        bool isMoving = Mathf.Abs(movementState.horizontal) > 0.1f;
+        animator.SetBool(movingAnimParam, isMoving && !attackState.isAttacking);
         
         // Idle is handled by transitions in the Animator
-        animator.SetBool(idleAnimParam, !isMoving && !isAttacking);
+        animator.SetBool(idleAnimParam, !isMoving && !attackState.isAttacking);
         
         // Attack is triggered via the Attack method
     }
@@ -189,38 +208,38 @@ public class PlayerController : MonoBehaviour
     private void UpdateDirectionVectors()
     {
         // Get the pill's actual transform directions
-        pillLeft = transform.up;
-        pillDown = transform.right;
+        visualState.pillLeft = transform.up;
+        visualState.pillDown = transform.right;
         
         // Get a vector pointing upward relative to screen
-        Vector2 approximateUp = -pillDown;
+        Vector2 approximateUp = -visualState.pillDown;
         
         // Calculate the raw angle between world up and the pill's "up"
-        realAngle = Vector2.SignedAngle(Vector2.up, approximateUp);
+        visualState.realAngle = Vector2.SignedAngle(Vector2.up, approximateUp);
         
         // Adjust angle to ensure it represents the shortest rotation to get the pill upright
-        if (realAngle > 90f)
+        if (visualState.realAngle > 90f)
         {
-            visualAngle = 180f - realAngle;
+            visualState.visualAngle = 180f - visualState.realAngle;
         } 
-        else if (realAngle < -90f)
+        else if (visualState.realAngle < -90f)
         {
-            visualAngle = -180f - realAngle;
+            visualState.visualAngle = -180f - visualState.realAngle;
         }
         else
         {
-            visualAngle = realAngle;
+            visualState.visualAngle = visualState.realAngle;
         }
         
         // Create the visual up vector that's always pointing generally upward
-        visualUp = Quaternion.Euler(0, 0, visualAngle) * Vector2.up;
+        visualState.visualUp = Quaternion.Euler(0, 0, visualState.visualAngle) * Vector2.up;
         
         // IMPORTANT: Visual right should follow actual movement direction
         // Not just based on the pill's rotation
-        visualRight = Quaternion.Euler(0, 0, visualAngle) * 
-                    (horizontal > 0 ? Vector2.right : 
-                    (horizontal < 0 ? Vector2.left : 
-                    (isFacingRight ? Vector2.right : Vector2.left)));
+        visualState.visualRight = Quaternion.Euler(0, 0, visualState.visualAngle) * 
+                    (movementState.horizontal > 0 ? Vector2.right : 
+                    (movementState.horizontal < 0 ? Vector2.left : 
+                    (visualState.isFacingRight ? Vector2.right : Vector2.left)));
     }
     
     // Draw debug rays to visualize the vectors
@@ -231,12 +250,12 @@ public class PlayerController : MonoBehaviour
         Vector3 worldOffset = new Vector3(0.2f, 0.2f, 0);
 
         // Pill's actual local axes
-        Debug.DrawRay(transform.position + localOffset, pillLeft * 0.5f, Color.magenta);    // Points to player's RIGHT
-        Debug.DrawRay(transform.position + localOffset, pillDown * 0.5f, Color.yellow);  // Points to player's DOWN
+        Debug.DrawRay(transform.position + localOffset, visualState.pillLeft * 0.5f, Color.magenta);    // Points to player's RIGHT
+        Debug.DrawRay(transform.position + localOffset, visualState.pillDown * 0.5f, Color.yellow);  // Points to player's DOWN
         
         // Corrected visual directions
-        Debug.DrawRay(transform.position, visualUp * 0.5f, Color.green);         // Points UPWARD on screen
-        Debug.DrawRay(transform.position, visualRight * 0.5f, Color.red);        // Points RIGHT/LEFT based on facing
+        Debug.DrawRay(transform.position, visualState.visualUp * 0.5f, Color.green);         // Points UPWARD on screen
+        Debug.DrawRay(transform.position, visualState.visualRight * 0.5f, Color.red);        // Points RIGHT/LEFT based on facing
         
         // World directions for reference
         Debug.DrawRay(transform.position + worldOffset, Vector2.up * 0.3f, new Color(0, 0.5f, 0));      // World up
@@ -285,8 +304,8 @@ public class PlayerController : MonoBehaviour
         {
             float t = (i + 1) / (float)(rayCount + 1);
             float yOffset = Mathf.Lerp(leftRightStartY, leftRightEndY, t);
-            Vector2 startPos = (Vector2)transform.position - pillDown * longEdgeOffset + pillLeft * yOffset;
-            CastRay(startPos, -pillDown, topContact);
+            Vector2 startPos = (Vector2)transform.position - visualState.pillDown * longEdgeOffset + visualState.pillLeft * yOffset;
+            CastRay(startPos, -visualState.pillDown, topContact);
         }
         
         // BOTTOM edge rays
@@ -294,8 +313,8 @@ public class PlayerController : MonoBehaviour
         {
             float t = (i + 1) / (float)(rayCount + 1);
             float yOffset = Mathf.Lerp(leftRightStartY, leftRightEndY, t);
-            Vector2 startPos = (Vector2)transform.position + pillDown * longEdgeOffset + pillLeft * yOffset;
-            CastRay(startPos, pillDown, bottomContact);
+            Vector2 startPos = (Vector2)transform.position + visualState.pillDown * longEdgeOffset + visualState.pillLeft * yOffset;
+            CastRay(startPos, visualState.pillDown, bottomContact);
         }
         
         // LEFT edge rays
@@ -303,8 +322,8 @@ public class PlayerController : MonoBehaviour
         {
             float t = (i + 1) / (float)(rayCount + 1);
             float xOffset = Mathf.Lerp(topBottomStartX, topBottomEndX, t);
-            Vector2 startPos = (Vector2)transform.position + pillLeft * shortEdgeOffset + pillDown * xOffset;
-            CastRay(startPos, pillLeft, leftContact);
+            Vector2 startPos = (Vector2)transform.position + visualState.pillLeft * shortEdgeOffset + visualState.pillDown * xOffset;
+            CastRay(startPos, visualState.pillLeft, leftContact);
         }
         
         // RIGHT edge rays
@@ -312,8 +331,8 @@ public class PlayerController : MonoBehaviour
         {
             float t = (i + 1) / (float)(rayCount + 1);
             float xOffset = Mathf.Lerp(topBottomStartX, topBottomEndX, t);
-            Vector2 startPos = (Vector2)transform.position - pillLeft * shortEdgeOffset + pillDown * xOffset;
-            CastRay(startPos, -pillLeft, rightContact);
+            Vector2 startPos = (Vector2)transform.position - visualState.pillLeft * shortEdgeOffset + visualState.pillDown * xOffset;
+            CastRay(startPos, -visualState.pillLeft, rightContact);
         }
     }
     
@@ -344,30 +363,30 @@ public class PlayerController : MonoBehaviour
     private void HandleOrientation()
     {
         // Calculate the angle difference
-        float angleDifference = Mathf.Abs(realAngle - visualAngle);
+        float angleDifference = Mathf.Abs(visualState.realAngle - visualState.visualAngle);
 
         // Add hysteresis to prevent flickering near threshold
         // Only change vertical orientation when clearly beyond threshold
-        bool shouldFlipVertically = isUpsideDown; // Start with current state
+        bool shouldFlipVertically = visualState.isUpsideDown; // Start with current state
         
         // Only change vertical flipping state when we're clearly beyond the threshold
-        if (angleDifference > 110f && !isUpsideDown)
+        if (angleDifference > 110f && !visualState.isUpsideDown)
         {
             shouldFlipVertically = true;
         }
-        else if (angleDifference < 70f && isUpsideDown)
+        else if (angleDifference < 70f && visualState.isUpsideDown)
         {
             shouldFlipVertically = false;
         }
         
         // Determine horizontal orientation based on movement and visual vectors
-        bool shouldFlipHorizontally = !isFacingRight; // Start with current state
+        bool shouldFlipHorizontally = !visualState.isFacingRight; // Start with current state
         
         // Only change horizontal orientation on clear input
-        if (Mathf.Abs(horizontal) > 0.1f)
+        if (Mathf.Abs(movementState.horizontal) > 0.1f)
         {
             // Base horizontal orientation on movement direction
-            shouldFlipHorizontally = horizontal < 0;
+            shouldFlipHorizontally = movementState.horizontal < 0;
             
             // When upside down on ground, invert horizontal orientation
             if (shouldFlipVertically)
@@ -435,17 +454,17 @@ public class PlayerController : MonoBehaviour
         }
 
         // Store current facing state for other gameplay logic
-        isFacingRight = !shouldFlipHorizontally;
-        isUpsideDown = shouldFlipVertically;
+        visualState.isFacingRight = !shouldFlipHorizontally;
+        visualState.isUpsideDown = shouldFlipVertically;
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        horizontal = context.ReadValue<Vector2>().x;
+        movementState.horizontal = context.ReadValue<Vector2>().x;
         
-        if (isWallJumping && horizontalInputReleased && horizontal != 0)
+        if (movementState.isWallJumping && movementState.horizontalInputReleased && movementState.horizontal != 0)
         {
-            isWallJumping = false;
+            movementState.isWallJumping = false;
         }
     }
     
@@ -471,7 +490,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, settings.jumpingPower);
 
         // Play jump sound
-        PlaySound(jumpSound);
+        PlaySound(audioSettings.jumpSound);
 
         jumpingParticleSystem.Play();
     }
@@ -487,18 +506,18 @@ public class PlayerController : MonoBehaviour
         Vector2 jumpDirection = wallNormal * settings.wallJumpDirectionPower + Vector2.up * settings.wallJumpPower;
         rb.AddForce(jumpDirection, ForceMode2D.Impulse);
         
-        isWallJumping = true;
-        horizontalInputReleased = false;
+        movementState.isWallJumping = true;
+        movementState.horizontalInputReleased = false;
         
         // Play jump sound
-        PlaySound(jumpSound);
+        PlaySound(audioSettings.jumpSound);
 
         StartCoroutine(PreventWallStick());
     }
     
     private Vector2 GetWallJumpNormal()
     {   
-        if (math.abs(horizontal) == 0)
+        if (math.abs(movementState.horizontal) == 0)
             return Vector2.zero;
 
         if (topContact.isWall)
@@ -514,7 +533,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(settings.wallJumpCooldown);
         yield return new WaitForSeconds(0.1f);
-        isWallJumping = false;
+        movementState.isWallJumping = false;
     }
     
     public bool IsGrounded()
@@ -529,7 +548,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAttacking)
+        if (context.performed && !attackState.isAttacking)
         {
             StartCoroutine(PerformAttack());
         }
@@ -537,7 +556,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator PerformAttack()
     {
-        isAttacking = true;
+        attackState.isAttacking = true;
 
         // Trigger attack animation
         if (animator != null)
@@ -547,12 +566,12 @@ public class PlayerController : MonoBehaviour
         }
         
         // Wait for attack duration
-        yield return new WaitForSeconds(attackAnimationDuration);
+        yield return new WaitForSeconds(settings.attackAnimationDuration);
 
         if (attackHitbox != null)
             attackHitbox.SetActive(false);
         
-        isAttacking = false;
+        attackState.isAttacking = false;
     }
 
     private void UpdateHitboxPosition()
@@ -560,17 +579,17 @@ public class PlayerController : MonoBehaviour
         if (attackHitbox != null)
         {
             // Start with the initial offset
-            Vector2 offset = initialHitboxOffset;
+            Vector2 offset = attackState.initialHitboxOffset;
             
             // Adjust based on facing direction
-            if (!isFacingRight)
+            if (!visualState.isFacingRight)
             {
                 // Mirror the offset when facing left
                 offset.y = -offset.y;
             }
             
             // Apply offset and rotational adjustments if necessary
-            if (isUpsideDown)
+            if (visualState.isUpsideDown)
             {
                 // When upside down, adjust the offset accordingly
                 offset.x = -offset.x;
@@ -583,20 +602,23 @@ public class PlayerController : MonoBehaviour
 
     public void PlayFootstepSound()
     {
-        PlaySound(footstepSound);
+        if (IsOnWall() || IsGrounded())
+        {
+            PlaySound(audioSettings.footstepSound);
+        }
     }
 
     public void PlayAttackSound()
     {
-        PlaySound(attackSound);
+        PlaySound(audioSettings.attackSound);
     }
 
     // Generic sound player method
     private void PlaySound(AudioClip clip)
     {
-        if (audioSource != null && clip != null)
+        if (audioSettings.audioSource != null && clip != null)
         {
-            audioSource.PlayOneShot(clip, soundVolume);
+            audioSettings.audioSource.PlayOneShot(clip, settings.soundVolume);
         }
     }
 }

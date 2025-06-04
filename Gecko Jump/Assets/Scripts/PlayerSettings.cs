@@ -51,4 +51,13 @@ public class PlayerSettings : ScriptableObject
     
     [Range(0.05f, 0.5f)]
     public float wallAngleThreshold = 0.3f;  // Cosine of angle for wall detection (0.3 ≈ 70°)
+
+    [Header("Animation Settings")]
+    [Tooltip("Duration of the attack animation in seconds.")]
+    public float attackAnimationDuration = 0.3f;
+
+    [Header("Audio Settings")]
+    [Range(0f, 1f)]
+    public float soundVolume = 1f;
 }
+// No changes needed here; all settings are already grouped and organized as configuration data.
