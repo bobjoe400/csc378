@@ -296,7 +296,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3344146605177566244}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -467,15 +467,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 5277b38a46d255b44b05bb1fc839c4e6, type: 2}
   playerStats: {fileID: 11400000, guid: 19543551aa789084ca6065195fc75d25, type: 2}
+  spawnPoint: {fileID: 5453176919127858255, guid: 9fcffbee64da66e42a85d9b88346e6e2, type: 3}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1024
   showDirectionVectors: 1
   showCollisionRays: 1
-  animator: {fileID: 3943518099425218009}
-  idleAnimParam: Idle
-  movingAnimParam: Moving
-  attackAnimParam: Attack
+  animationSettings:
+    animator: {fileID: 3943518099425218009}
+    idleAnimParam: Idle
+    movingAnimParam: Moving
+    attackAnimParam: Attack
   jumpingParticleSystem: {fileID: 6866166026689352578}
   audioSettings:
     audioSource: {fileID: 3214869738663650325}
@@ -489,6 +491,7 @@ MonoBehaviour:
     initialHitboxOffset: {x: 0, y: 0}
   characterSprite: {fileID: 4182935890696592310}
   visualState:
+    isInvuln: 0
     isFacingRight: 0
     isUpsideDown: 0
     pillLeft: {x: 0, y: 0}
@@ -601,7 +604,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0822511, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -611,7 +614,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.43287563, y: 0.12298676}
+  m_Size: {x: 0.59737784, y: 0.12298676}
   m_EdgeRadius: 0
 --- !u!114 &8163041958894377450
 MonoBehaviour:
