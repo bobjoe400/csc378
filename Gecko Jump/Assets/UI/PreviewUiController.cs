@@ -56,7 +56,6 @@ public class PreviewUIController : MonoBehaviour
     void Start()
     {
         ResetVisuals();
-        HideSkipUI();
     }
 
     void OnAnyKeyPressed(InputAction.CallbackContext context)

@@ -106,6 +106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4159713345087638228, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
+      propertyPath: BoundingShape2D
+      value: 
+      objectReference: {fileID: 3589041852445823038}
     - target: {fileID: 5020090626442292418, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
@@ -138,5 +142,10 @@ PrefabInstance:
 --- !u!4 &3358991157593979624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5020090626442292418, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
+  m_PrefabInstance: {fileID: 7725777252839675434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &3589041852445823038 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6555464204152096276, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
   m_PrefabInstance: {fileID: 7725777252839675434}
   m_PrefabAsset: {fileID: 0}

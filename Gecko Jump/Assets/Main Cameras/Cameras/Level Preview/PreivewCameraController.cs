@@ -12,7 +12,7 @@ public class PreivewCameraController : MonoBehaviour
     [SerializeField] private float cameraHalfwayWait = 1.0f;
     
     [Header("Skip UI")]
-    [SerializeField] private PreviewUIController holdToSkipSlider; // Reference to your skip slider
+    [SerializeField] private PreviewUIController previewUiController; // Reference to your skip slider
 
     [SerializeField] private bool isMovingForward;
 
@@ -28,14 +28,12 @@ public class PreivewCameraController : MonoBehaviour
         myFixedSpeed = new SplineAutoDolly.FixedSpeed { Speed = initialCameraSpeed };
         dollyCamera.AutomaticDolly.Method = myFixedSpeed;
 
-        playerInput.enabled = false;
-
         StartCoroutine(WaitForCameraToStart());
     }
 
     void Update()
     {
-        if (dollyCamera != null)
+        if (dollyCamera != null && dollyCamera.AutomaticDolly.Enabled)
         {
             if (isMovingForward)
             {
@@ -56,27 +54,31 @@ public class PreivewCameraController : MonoBehaviour
 
     IEnumerator WaitForCameraToStart()
     {
+        playerInput.enabled = false;
+
+        // Show the skip UI and enable skipping
+        if (previewUiController != null)
+        {
+            previewUiController.ShowSkipUI();
+            previewUiController.OnSkipComplete += CancelCamera; // Subscribe to skip completion
+        }
+
         yield return new WaitForSeconds(cameraStartWait);
 
         dollyCamera.AutomaticDolly.Enabled = true;
         cinemachineCamera.Priority = 11;
         myFixedSpeed.Speed = initialCameraSpeed;
 
-        // Show the skip UI and enable skipping
-        if (holdToSkipSlider != null)
-        {
-            holdToSkipSlider.ShowSkipUI();
-            holdToSkipSlider.OnSkipComplete += CancelCamera; // Subscribe to skip completion
-        }
-
+        
         isMovingForward = true;
     }
 
     IEnumerator WaitAtHalfway()
     {   
         myFixedSpeed.Speed = 0.0f;
-        isMovingForward = false;
         yield return new WaitForSeconds(cameraHalfwayWait);
+
+        isMovingForward = false;
         myFixedSpeed.Speed = -1 * initialCameraSpeed * cameraReturnScalar;
     }
     void CancelCamera()
@@ -86,10 +88,10 @@ public class PreivewCameraController : MonoBehaviour
         cinemachineCamera.Priority = 9;
 
         // Hide the skip UI when camera movement is complete
-        if (holdToSkipSlider != null)
+        if (previewUiController != null)
         {
-            holdToSkipSlider.HideSkipUI();
-            holdToSkipSlider.OnSkipComplete -= CancelCamera;
+            previewUiController.HideSkipUI();
+            previewUiController.OnSkipComplete -= CancelCamera;
         }
     }
 }
