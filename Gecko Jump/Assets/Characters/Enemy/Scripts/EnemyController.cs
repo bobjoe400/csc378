@@ -44,12 +44,11 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyHitStart()
     {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         isInHitStun = true;
 
         if (isDead)
         {
-            animator.SetTrigger("Death");
+
             PlaySound(deathSound);
 
             return;
@@ -68,7 +67,6 @@ public class EnemyController : MonoBehaviour
         }
 
         isInHitStun = false;
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     private void Die()
