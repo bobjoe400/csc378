@@ -8,6 +8,17 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private GameObject geraldPrefab; // Assign this in the inspector or load from Resources
 
+    [System.Serializable]
+    private class AudioSettings
+    {
+        public AudioSource audioSource;
+        public AudioClip respawnSound;
+
+        public float soundVolume = 1.0f;
+    }
+
+    [SerializeField] private AudioSettings audioSettings;
+
     public void InitiateRespawn()
     {
         // Start the coroutine to respawn Gerald
@@ -18,6 +29,15 @@ public class SpawnPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(geraldPrefab.GetComponent<PlayerController>().settings.respawnTime); // Wait a frame to ensure the scene is fully loaded
         CreateGerald();
+        PlaySound(audioSettings.respawnSound);
+    }
+    
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSettings.audioSource != null && clip != null)
+        {
+            audioSettings.audioSource.PlayOneShot(clip, audioSettings.soundVolume);
+        }
     }
 
     public void CreateGerald()

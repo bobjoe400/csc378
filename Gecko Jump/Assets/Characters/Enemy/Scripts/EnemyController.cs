@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -5,16 +7,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int health = 3;
     [SerializeField] private int damage = 1;
     public int Damage => damage;
-
     [SerializeField] private GameObject lockedDoor;
     [SerializeField] private GameObject unlockedDoor;
-
-    // Add Animator reference
     [SerializeField] private Animator animator;
-
-    // Add hit animation duration (time before returning to idle)
-    [SerializeField] private float hitStunDuration = 0.3f;
-
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip deathSound;
@@ -35,42 +30,49 @@ public class EnemyController : MonoBehaviour
     {
         health -= amount;
 
-        if (isDead) return; // Ignore damage if already dead
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
+        }
 
         // Play hit animation
         if (animator != null && !isInHitStun)
         {
             animator.SetTrigger("Hit");
-            StartCoroutine(HitStunRoutine());
-        }
-
-        // Check if should die
-        if (health <= 0 && !isDead)
-        {
-            Die();
         }
     }
 
-    // Prevent multiple hit reactions in quick succession
-    private System.Collections.IEnumerator HitStunRoutine()
+    public void EnemyHitStart()
     {
-        PlaySound(hitSound);
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         isInHitStun = true;
-        yield return new WaitForSeconds(hitStunDuration);
+
+        if (isDead)
+        {
+            animator.SetTrigger("Death");
+            PlaySound(deathSound);
+
+            return;
+        }
+
+        PlaySound(hitSound);
+    }
+
+    public void EnemyHitEnd()
+    {
+        if (isDead)
+        {
+            Die();
+
+            return;
+        }
+
         isInHitStun = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     private void Die()
     {
-
-        // Play death animation if available
-        if (animator != null)
-        {
-            animator.SetTrigger("Death");
-            // Wait for animation before destroying
-            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
-        }
-
         if (lockedDoor != null)
         {
             lockedDoor.SetActive(false);
@@ -81,9 +83,7 @@ public class EnemyController : MonoBehaviour
             unlockedDoor.SetActive(true);
         }
 
-        PlaySound(deathSound);
-        
-        isDead = true; // Prevent further damage
+        Destroy(gameObject);
     }
 
     // Generic sound player method

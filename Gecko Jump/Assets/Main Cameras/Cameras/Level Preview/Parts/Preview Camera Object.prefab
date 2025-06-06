@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SplineSettings:
-    Spline: {fileID: 2514710724403741591, guid: e17c4f588ecd06a4485e062d1cebb3d7, type: 3}
+    Spline: {fileID: 0}
     Position: 0
     Units: 1
   SplineOffset: {x: 0, y: 0, z: 0}
@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46796cf1b43d684b8b6f3e4c3efbbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 7836333092507220878, guid: 6be0b73b3c36b0a45b737e5dbb8476ea, type: 3}
+  playerInput: {fileID: 0}
   initialCameraSpeed: 0.1
   cameraReturnScalar: 2
   cameraStartWait: 0.2
   cameraHalfwayWait: 1
-  holdToSkipSlider: {fileID: 2593340347787688896, guid: 61eb237832ad73043b7d30bb0849b29c, type: 3}
+  previewUiController: {fileID: 0}
   isMovingForward: 0

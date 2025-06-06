@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         public AudioClip landSound;
         public AudioClip attackSound;
         public AudioClip footstepSound;
+        public AudioClip damageSound;
     }
 
     [Header("Audio")]
@@ -636,6 +637,11 @@ public class PlayerController : MonoBehaviour
         PlaySound(audioSettings.attackSound);
     }
 
+    public void PlayDamageSound()
+    {
+        PlaySound(audioSettings.damageSound);
+    }
+
     // Generic sound player method
     private void PlaySound(AudioClip clip)
     {
@@ -660,6 +666,8 @@ public class PlayerController : MonoBehaviour
         if (visualState.isInvuln == true) return; // If in invulnerability, ignore damage
 
         playerStats.health -= damage;
+
+        PlayDamageSound();
 
         StartCoroutine(InvulnerabilityCoroutine());
 

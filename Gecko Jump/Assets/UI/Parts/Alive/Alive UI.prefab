@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3175911057585704901}
   - component: {fileID: 6865607227234703279}
   - component: {fileID: 8361412441606639723}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Alive UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -110,45 +110,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8377560658315880124}
     m_Modifications:
+    - target: {fileID: 65125757348074192, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 279032485065810692, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1027904517317566325, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
       propertyPath: m_Name
       value: Health UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1027904517317566325, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197228625758251677, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4417721073326905572, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
+    - target: {fileID: 6205656205973031773, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.53125006
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.4095682
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0.4061966
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.4822998
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.36100006
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006282929664667490, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.13700008
+    - target: {fileID: 6819167882040045380, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8802683704918730909, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
       propertyPath: m_Pivot.x
@@ -181,18 +173,6 @@ PrefabInstance:
     - target: {fileID: 8802683704918730909, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
       propertyPath: m_SizeDelta.y
       value: -17.767792
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802683704918730909, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4159292
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802683704918730909, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4159292
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802683704918730909, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4159292
       objectReference: {fileID: 0}
     - target: {fileID: 8802683704918730909, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -242,8 +222,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5322297780640441981, guid: d4570f1f9319f7345910b341efabaccf, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -160,11 +160,11 @@ public class EnemyWaypointPatrol : MonoBehaviour
         }
         
         // Check if we have a parent for organization
-        Transform waypointsParent = transform.parent?.Find("Waypoints");
+        Transform waypointsParent = transform.parent?.Find("Enemy Waypoints");
         if (waypointsParent == null)
         {
             // Create a new parent
-            GameObject parentObj = new GameObject("Waypoints");
+            GameObject parentObj = new GameObject("Enemy Waypoints");
             parentObj.transform.position = transform.position;
             if (transform.parent != null)
                 parentObj.transform.SetParent(transform.parent);

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3712152771778384416}
   - component: {fileID: 2593340347787688896}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4bf531af6925b4ab13e0e955c92caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillImage: {fileID: 5465366155728667415, guid: abe3fcbfc86fa84439576d55f5328e49, type: 3}
-  previewUi: {fileID: 1829965631527045770, guid: 2f668fb50f99d7a41854bcb28c79fb25, type: 3}
-  aliveUi: {fileID: 8349916144349860755, guid: 7cbb73ee29ebb6048b77df2a22ceb5f5, type: 3}
+  fillImage: {fileID: 0}
+  previewUi: {fileID: 0}
+  aliveUi: {fileID: 0}
   holdDuration: 1.5
   startColor: {r: 1, g: 1, b: 1, a: 1}
   endColor: {r: 0, g: 1, b: 0, a: 1}
@@ -186,10 +186,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3712152771778384416}
     m_Modifications:
-    - target: {fileID: 723463021757667953, guid: 7cbb73ee29ebb6048b77df2a22ceb5f5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8349916144349860755, guid: 7cbb73ee29ebb6048b77df2a22ceb5f5, type: 3}
       propertyPath: m_Name
       value: Alive UI

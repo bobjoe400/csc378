@@ -8,7 +8,7 @@ public class PreivewCameraController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float initialCameraSpeed = 0.2f;
     [SerializeField] private float cameraReturnScalar = 2.0f;
-    [SerializeField] private float cameraStartWait = 0.2f;
+    [SerializeField] private float cameraStartWait = 3.0f;
     [SerializeField] private float cameraHalfwayWait = 1.0f;
     
     [Header("Skip UI")]

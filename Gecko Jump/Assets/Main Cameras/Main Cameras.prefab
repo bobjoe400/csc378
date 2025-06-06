@@ -41,22 +41,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1242105688989974383}
     m_Modifications:
-    - target: {fileID: 1023230617188595895, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
-      propertyPath: m_SplineSettings.Spline
-      value: 
-      objectReference: {fileID: 5660615693340242598}
-    - target: {fileID: 7397988340098157224, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7397988340098157224, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7397988340098157224, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 8364379984461407729, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
@@ -83,17 +67,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8364379984461407729, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
   m_PrefabInstance: {fileID: 5123402337626204140}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5660615693340242598 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 691145023467967818, guid: ac356665638c16d4d9eb3da72e819b9f, type: 3}
-  m_PrefabInstance: {fileID: 5123402337626204140}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7725777252839675434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,10 +79,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 4159713345087638228, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
-      propertyPath: BoundingShape2D
-      value: 
-      objectReference: {fileID: 3589041852445823038}
     - target: {fileID: 5020090626442292418, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
@@ -122,18 +91,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6937173846241677421, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937173846241677421, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.2099998
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937173846241677421, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -142,10 +99,5 @@ PrefabInstance:
 --- !u!4 &3358991157593979624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5020090626442292418, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
-  m_PrefabInstance: {fileID: 7725777252839675434}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &3589041852445823038 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6555464204152096276, guid: 97d4b245bfa0a2c4b89e25262f2e6764, type: 3}
   m_PrefabInstance: {fileID: 7725777252839675434}
   m_PrefabAsset: {fileID: 0}
