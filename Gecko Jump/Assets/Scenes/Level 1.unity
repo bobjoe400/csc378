@@ -9362,7 +9362,7 @@ PrefabInstance:
       objectReference: {fileID: 1399999086}
     - target: {fileID: 7986148453691877201, guid: 853e24264e89bb242b9d08b8ab2a3b98, type: 3}
       propertyPath: cameraStartWait
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7986148453691877201, guid: 853e24264e89bb242b9d08b8ab2a3b98, type: 3}
       propertyPath: initialCameraSpeed

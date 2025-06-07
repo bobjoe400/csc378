@@ -1336,6 +1336,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2257279268528708863, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257279268528708863, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
+      propertyPath: 'waypoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5527878147122436243, guid: bd36e92f1182c0549b3910979e13f820, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.1
@@ -39676,6 +39684,10 @@ PrefabInstance:
     - target: {fileID: 4378046108562159671, guid: 853e24264e89bb242b9d08b8ab2a3b98, type: 3}
       propertyPath: m_LocalPosition.z
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272243556512816987, guid: 853e24264e89bb242b9d08b8ab2a3b98, type: 3}
+      propertyPath: AutomaticDolly.Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5272243556512816987, guid: 853e24264e89bb242b9d08b8ab2a3b98, type: 3}
       propertyPath: m_SplineSettings.Spline
