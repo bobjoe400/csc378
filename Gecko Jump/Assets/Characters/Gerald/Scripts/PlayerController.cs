@@ -656,13 +656,24 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Handle collision with enemy
-            TakeDamage(collision.gameObject.GetComponent<EnemyController>().Damage);
+            int damage = collision.gameObject.GetComponent<EnemyController>().Damage;
+            TakeDamage(damage);
+
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fireball"))
+        {
+            TakeDamage(1);
             
+            Destroy(collision.gameObject);
         }
     }
 
     private void TakeDamage(int damage)
-    {   
+    {
         if (visualState.isInvuln == true) return; // If in invulnerability, ignore damage
 
         playerStats.health -= damage;
