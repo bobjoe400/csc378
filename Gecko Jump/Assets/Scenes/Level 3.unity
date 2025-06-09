@@ -339,7 +339,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2138198173}
   bossCamera: {fileID: 1452979112}
   boss: {fileID: 1406040280150757718}
-  Blocker: {fileID: 2082901229}
+  blocker: {fileID: 2082901229}
   spawnPoint: {fileID: 1255854732}
   player: {fileID: 137809517}
 --- !u!60 &148306280
@@ -25058,7 +25058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460527033}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BossTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

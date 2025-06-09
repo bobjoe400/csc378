@@ -17,7 +17,7 @@ public class BossTrigger : MonoBehaviour
 
     private float bossMoveSpeed = 3.0f;
 
-    [SerializeField] private Tilemap Blocker;
+    [SerializeField] private Tilemap blocker;
 
     [SerializeField] private SpawnPoint spawnPoint;
 
@@ -47,6 +47,7 @@ public class BossTrigger : MonoBehaviour
     IEnumerator StartIntro()
     {
         GetComponent<PolygonCollider2D>().enabled = false;
+        blocker.enabled = true;
 
         playerInput.enabled = false;
         playerController.visualState.isInvuln = true;
@@ -85,6 +86,9 @@ public class BossTrigger : MonoBehaviour
     IEnumerator WaitToStartPlayerMovement()
     {
         playerCamera.Lens.OrthographicSize = 6f;
+        CinemachineConfiner2D confiner = playerCamera.GetComponent<CinemachineConfiner2D>();
+
+        confiner.InvalidateBoundingShapeCache();
 
         yield return new WaitForSeconds(1f);
 
