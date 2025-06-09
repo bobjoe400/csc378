@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
 
     [System.Serializable]
-    private class VisualState
+    public class VisualState
     {
         public bool isInvuln;
         public bool isFacingRight;
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     }
     [Header("Visual Settings")]
     [SerializeField] private SpriteRenderer characterSprite;
-    [SerializeField] private VisualState visualState;
+    public VisualState visualState;
 
 
     [System.Serializable]

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -10,9 +12,9 @@ public class EnemyWaypointPatrol : MonoBehaviour
     [Header("Waypoints")]
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private bool loopPath = true;
-    
+
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] public float moveSpeed = 2f;
     [SerializeField] private float waypointReachedDistance = 0.1f;
     [SerializeField] private float waitTimeAtWaypoints = 0.5f;
     

@@ -26,8 +26,7 @@ public class BossController : MonoBehaviour
 
     Animator animator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    Vector2 target;
+    private bool isDead = false;
 
     void Start()
     {
@@ -36,8 +35,6 @@ public class BossController : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentLeadingPos = player.position;
-
-        StartCoroutine(AttackPeriod());
     }
 
     // Update is called once per frame
@@ -54,9 +51,14 @@ public class BossController : MonoBehaviour
         DrawLeadingTargetSquare(leadingTarget, Color.yellow);
     }
 
+    public void StartAttacking()
+    {
+        StartCoroutine(AttackPeriod());
+    }
+
     IEnumerator AttackPeriod()
     {
-        while (true)
+        while (!isDead)
         {
             animator.SetBool("Attacking", true);
             yield return new WaitForSeconds(0.2f);
