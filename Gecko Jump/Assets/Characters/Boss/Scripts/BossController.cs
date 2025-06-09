@@ -1,14 +1,17 @@
 using System.Collections;
 using JetBrains.Annotations;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
     [Header("Boss Stats")]
-    [SerializeField] private float health = 7;
-    public float Health => health;
+    [SerializeField] private PlayerStats bossStats;
+
+    // Track if we're currently in hit stun
+    private bool isInHitStun = false;
 
     [Header("Leading Settings")]
     public float predictionTime = 0.5f;        // How far ahead to predict
@@ -26,6 +29,8 @@ public class BossController : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip deathSound;
     [SerializeField] private float soundVolume = 1f;
 
     private ProjectileLauncher fireBallLauncher;
@@ -36,6 +41,8 @@ public class BossController : MonoBehaviour
 
     void Start()
     {
+        bossStats.health = bossStats.maxHealth;
+
         fireBallLauncher = GetComponent<ProjectileLauncher>();
 
         playerRb = player.GetComponent<Rigidbody2D>();
@@ -89,6 +96,64 @@ public class BossController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int amount)
+    {
+        if (isInHitStun || isDead ) return;
+
+        bossStats.health -= amount;
+
+        if (bossStats.health <= 0 && !isDead)
+        {
+            isDead = true;
+
+            animator.SetTrigger("Die");
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
+        }
+    }
+
+    public void BossHitStart()
+    {
+        isInHitStun = true;
+        if (animator.GetBool("Attacking"))
+        {
+            animator.SetBool("Attacking", false);
+        }
+
+        PlaySound(hitSound);
+    }
+
+    public void BossHitEnd()
+    {
+        isInHitStun = false;
+    }
+
+    public void BossDie()
+    {
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        gameObject.GetComponent<EnemyWaypointPatrol>().moveSpeed = 0;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.freezeRotation = true;
+        rb.includeLayers |= LayerMask.GetMask("Platforms");
+
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        PlaySound(deathSound);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platforms"))
+        {
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        }    
+    }
+
     Vector3 CalculateLeadingPosition()
     {
         // Basic leading calculation: current position + velocity * prediction time
@@ -105,7 +170,7 @@ public class BossController : MonoBehaviour
         return predictedPosition;
     }
 
-    void onAttack()
+    public void OnBossAttack()
     {
         PlaySound(attackSound);
         fireBallLauncher.FireAtLeadingTarget(leadingTarget);

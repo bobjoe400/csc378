@@ -9,25 +9,28 @@ using UnityEngine.UIElements;
 
 public class BossTrigger : MonoBehaviour
 {
+    [Header("Camera Binds")]
     [SerializeField] private CinemachineCamera playerCamera;
     [SerializeField] private Collider2D newCameraBounds;
     [SerializeField] private GameObject tempCameraObject;
     [SerializeField] private CinemachineCamera bossCamera;
+
+    [Header("Boss Binds")]
     [SerializeField] private GameObject boss;
+    [SerializeField] private GameObject bossHealthUi;
     private BossController bossController;
     private EnemyWaypointPatrol bossPatrol;
-
     private float bossMoveSpeed = 3.0f;
-
+    
+    [Header("Tile Binds")]
     [SerializeField] private GameObject blocker;
 
-    [SerializeField] private SpawnPoint spawnPoint;
-    [SerializeField] private GameObject newSpawnPoint;
-
+    [Header("Player Binds")]
     [SerializeField] GameObject player;
-
     private PlayerInput playerInput;
     private PlayerController playerController;
+    [SerializeField] private SpawnPoint spawnPoint;
+    [SerializeField] private GameObject newSpawnPoint;
 
     void Start()
     {
@@ -49,6 +52,8 @@ public class BossTrigger : MonoBehaviour
 
     IEnumerator StartIntro()
     {
+        bossHealthUi.SetActive(true);
+        
         GetComponent<PolygonCollider2D>().enabled = false;
         blocker.SetActive(true);
 

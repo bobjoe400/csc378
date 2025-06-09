@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - DoorChecker
   - Fireball
+  - Platforms
   layers:
   - Default
   - TransparentFX

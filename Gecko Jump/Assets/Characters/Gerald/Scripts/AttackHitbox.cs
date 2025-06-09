@@ -18,10 +18,18 @@ public class AttackHitbox : MonoBehaviour
         {
             // Get enemy component
             EnemyController enemy;
-            if((enemy = other.GetComponent<EnemyController>()) != null)
-            {   
+            if ((enemy = other.GetComponent<EnemyController>()) != null)
+            {
                 // Apply damage and knockback
                 enemy.TakeDamage(damage);
+                return;
+            }
+
+            BossController boss;
+            if ((boss = other.GetComponent<BossController>()) != null)
+            {
+                boss.TakeDamage(damage);
+                return;
             }
         }
     }
