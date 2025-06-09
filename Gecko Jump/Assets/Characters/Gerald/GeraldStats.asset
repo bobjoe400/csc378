@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b953a37d53918db4f990416725666d4a, type: 3}
   m_Name: GeraldStats
   m_EditorClassIdentifier: 
-  health: 10
+  health: 9
   maxHealth: 10

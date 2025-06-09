@@ -8,6 +8,8 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private GameObject geraldPrefab; // Assign this in the inspector or load from Resources
 
+    [SerializeField] private BossController boss;
+
     [System.Serializable]
     private class AudioSettings
     {
@@ -29,9 +31,8 @@ public class SpawnPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(geraldPrefab.GetComponent<PlayerController>().settings.respawnTime); // Wait a frame to ensure the scene is fully loaded
         CreateGerald();
-        PlaySound(audioSettings.respawnSound);
     }
-    
+
     private void PlaySound(AudioClip clip)
     {
         if (audioSettings.audioSource != null && clip != null)
@@ -51,12 +52,29 @@ public class SpawnPoint : MonoBehaviour
             Debug.Log("Gerald not found, spawning a new one.");
             GameObject newGerald = Instantiate(geraldPrefab, transform.position, Quaternion.identity);
             newGerald.transform.rotation = Quaternion.Euler(0, 0, -90); // Set rotation if needed
+            newGerald.GetComponent<PlayerController>().spawnPoint = this;
+            newGerald.GetComponent<PlayerController>().visualState.isInvuln = true;
 
             cinemachineCamera.Target.TrackingTarget = newGerald.transform;
+
+            if (boss != null)
+            {
+                boss.player = newGerald;
+            }
+
+            PlaySound(audioSettings.respawnSound);
+
+            StartCoroutine(PlayerInvulnBuffer(newGerald));
         }
         else
         {
             Debug.Log("Gerald already exists in the scene.");
         }
+    }
+    
+    IEnumerator PlayerInvulnBuffer(GameObject player)
+    {
+        yield return new WaitForSeconds(1f);
+        player.GetComponent<PlayerController>().visualState.isInvuln = false;
     }
 }

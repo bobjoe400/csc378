@@ -10,6 +10,8 @@ using UnityEngine.UIElements;
 public class BossTrigger : MonoBehaviour
 {
     [SerializeField] private CinemachineCamera playerCamera;
+    [SerializeField] private Collider2D newCameraBounds;
+    [SerializeField] private GameObject tempCameraObject;
     [SerializeField] private CinemachineCamera bossCamera;
     [SerializeField] private GameObject boss;
     private BossController bossController;
@@ -17,9 +19,10 @@ public class BossTrigger : MonoBehaviour
 
     private float bossMoveSpeed = 3.0f;
 
-    [SerializeField] private Tilemap blocker;
+    [SerializeField] private GameObject blocker;
 
     [SerializeField] private SpawnPoint spawnPoint;
+    [SerializeField] private GameObject newSpawnPoint;
 
     [SerializeField] GameObject player;
 
@@ -47,7 +50,7 @@ public class BossTrigger : MonoBehaviour
     IEnumerator StartIntro()
     {
         GetComponent<PolygonCollider2D>().enabled = false;
-        blocker.enabled = true;
+        blocker.SetActive(true);
 
         playerInput.enabled = false;
         playerController.visualState.isInvuln = true;
@@ -85,15 +88,32 @@ public class BossTrigger : MonoBehaviour
 
     IEnumerator WaitToStartPlayerMovement()
     {
+        playerCamera.Target.TrackingTarget = tempCameraObject.transform;
         playerCamera.Lens.OrthographicSize = 6f;
-        CinemachineConfiner2D confiner = playerCamera.GetComponent<CinemachineConfiner2D>();
 
+        yield return new WaitForSeconds(0.5f);
+
+        CinemachineConfiner2D confiner = playerCamera.GetComponent<CinemachineConfiner2D>();
+        confiner.BoundingShape2D = newCameraBounds;
         confiner.InvalidateBoundingShapeCache();
+
+        yield return new WaitForSeconds(0.5f);
+
+        playerCamera.Target.TrackingTarget = player.transform;
+
+        spawnPoint.transform.position = newSpawnPoint.transform.position;
 
         yield return new WaitForSeconds(1f);
 
         bossCamera.Priority = 9;
         playerInput.enabled = true;
+
+        StartCoroutine(PlayerInvulnBuffer());
+    }
+
+    IEnumerator PlayerInvulnBuffer()
+    {
+        yield return new WaitForSeconds(1f);
         playerController.visualState.isInvuln = false;
     }
 }

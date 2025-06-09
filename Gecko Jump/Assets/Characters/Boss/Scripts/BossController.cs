@@ -6,40 +6,61 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
+    [Header("Boss Stats")]
+    [SerializeField] private float health = 7;
+    public float Health => health;
+
     [Header("Leading Settings")]
     public float predictionTime = 0.5f;        // How far ahead to predict
     public float maxLeadDistance = 10f;        // Maximum leading distance
     public float smoothingSpeed = 5f;          // How smoothly to update
 
     [Header("Target")]
-    public Transform player;
+    public GameObject player;
+    private Transform playerTransform;
     public Vector2 leadingTarget;            // Empty GameObject to represent leading position
 
     private Rigidbody2D playerRb;
     private Vector3 currentLeadingPos;
 
+    [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private float soundVolume = 1f;
 
     private ProjectileLauncher fireBallLauncher;
 
-    Animator animator;
+    private Animator animator;
 
     private bool isDead = false;
 
     void Start()
     {
         fireBallLauncher = GetComponent<ProjectileLauncher>();
+
         playerRb = player.GetComponent<Rigidbody2D>();
+        playerTransform = player.GetComponent<Transform>();
+
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        currentLeadingPos = player.position;
+        currentLeadingPos = playerTransform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null) return;
+
+        if (playerTransform == null)
+        {
+            playerTransform = player.GetComponent<Transform>();
+        }
+
+        if (playerRb == null)
+        {
+            playerRb = player.GetComponent<Rigidbody2D>();
+        }
+
         Vector3 newLeadingPos = CalculateLeadingPosition();
 
         // Smooth the leading position
@@ -71,14 +92,14 @@ public class BossController : MonoBehaviour
     Vector3 CalculateLeadingPosition()
     {
         // Basic leading calculation: current position + velocity * prediction time
-        Vector3 predictedPosition = player.position + (Vector3)playerRb.linearVelocity * predictionTime;
+        Vector3 predictedPosition = playerTransform.position + (Vector3)playerRb.linearVelocity * predictionTime;
 
         // Clamp the leading distance
-        Vector3 leadOffset = predictedPosition - player.position;
+        Vector3 leadOffset = predictedPosition - playerTransform.position;
         if (leadOffset.magnitude > maxLeadDistance)
         {
             leadOffset = leadOffset.normalized * maxLeadDistance;
-            predictedPosition = player.position + leadOffset;
+            predictedPosition = playerTransform.position + leadOffset;
         }
 
         return predictedPosition;
