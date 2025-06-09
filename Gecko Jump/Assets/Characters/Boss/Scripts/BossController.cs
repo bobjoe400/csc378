@@ -151,6 +151,7 @@ public class BossController : MonoBehaviour
         if (collision.gameObject.CompareTag("Platforms"))
         {
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }    
     }
 
