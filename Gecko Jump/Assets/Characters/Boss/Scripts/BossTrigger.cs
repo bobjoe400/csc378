@@ -21,7 +21,7 @@ public class BossTrigger : MonoBehaviour
     private BossController bossController;
     private EnemyWaypointPatrol bossPatrol;
     private float bossMoveSpeed = 3.0f;
-    
+
     [Header("Tile Binds")]
     [SerializeField] private GameObject blocker;
 
@@ -31,6 +31,12 @@ public class BossTrigger : MonoBehaviour
     private PlayerController playerController;
     [SerializeField] private SpawnPoint spawnPoint;
     [SerializeField] private GameObject newSpawnPoint;
+
+    [Header("Sound Binds")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip encounterSound;
+    [SerializeField] private float soundVolume = 1.0f;
+
 
     void Start()
     {
@@ -52,8 +58,10 @@ public class BossTrigger : MonoBehaviour
 
     IEnumerator StartIntro()
     {
-        bossHealthUi.SetActive(true);
+        PlaySound(encounterSound);
         
+        bossHealthUi.SetActive(true);
+
         GetComponent<PolygonCollider2D>().enabled = false;
         blocker.SetActive(true);
 
@@ -71,7 +79,7 @@ public class BossTrigger : MonoBehaviour
 
     IEnumerator WaitForIntroToFinish()
     {
-        int counter = 3;
+        int counter = 2;
         Animator bossAnimator = boss.GetComponent<Animator>();
 
         while (counter > 0)
@@ -120,5 +128,13 @@ public class BossTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         playerController.visualState.isInvuln = false;
+    }
+    
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip, soundVolume);
+        }
     }
 }
