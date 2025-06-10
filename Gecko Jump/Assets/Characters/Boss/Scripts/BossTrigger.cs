@@ -32,6 +32,7 @@ public class BossTrigger : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip encounterSound;
     [SerializeField] private float soundVolume = 1.0f;
+    [SerializeField] private AudioSource mainMusic;
 
 
     void Start()
@@ -91,6 +92,8 @@ public class BossTrigger : MonoBehaviour
     void StartFight()
     {
         bossPatrol.moveSpeed = bossMoveSpeed;
+
+        mainMusic.Play();
 
         StartCoroutine(WaitToStartPlayerMovement());
     }

@@ -191,21 +191,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2638508345340344220, guid: 9ab34bba6f8f85e4d9fbbdd2bc7ef31e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933879331012770771, guid: 9ab34bba6f8f85e4d9fbbdd2bc7ef31e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6611377888803365963, guid: 9ab34bba6f8f85e4d9fbbdd2bc7ef31e, type: 3}
       propertyPath: m_Name
       value: Hold To Skip
-      objectReference: {fileID: 0}
-    - target: {fileID: 6611377888803365963, guid: 9ab34bba6f8f85e4d9fbbdd2bc7ef31e, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -308,10 +296,6 @@ PrefabInstance:
     - target: {fileID: 5179383665259033487, guid: eb53d76bc7bb9df49b5e77dcfe9caf6f, type: 3}
       propertyPath: m_Name
       value: Level Preview
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179383665259033487, guid: eb53d76bc7bb9df49b5e77dcfe9caf6f, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

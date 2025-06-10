@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2630698046442094203}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hold To Skip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,10 @@ PrefabInstance:
     - target: {fileID: 2202974564581918248, guid: 0d341dcceb96bce4bbc2e94dd9cd1a76, type: 3}
       propertyPath: m_Name
       value: Hold Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202974564581918248, guid: 0d341dcceb96bce4bbc2e94dd9cd1a76, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6704729801799173539, guid: 0d341dcceb96bce4bbc2e94dd9cd1a76, type: 3}
       propertyPath: m_Pivot.x
@@ -150,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 5004110546961729923, guid: abe3fcbfc86fa84439576d55f5328e49, type: 3}
       propertyPath: m_Name
       value: Skip Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004110546961729923, guid: abe3fcbfc86fa84439576d55f5328e49, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5351926614135305423, guid: abe3fcbfc86fa84439576d55f5328e49, type: 3}
       propertyPath: m_Pivot.x

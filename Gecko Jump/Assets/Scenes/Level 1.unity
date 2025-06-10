@@ -638,8 +638,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4621324138034073711, guid: 3828e90b335d57540a3d6b3ffdf303f5, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9f07fade9cea93a42974c192f69daf58, type: 3}
-  m_Resource: {fileID: 8300000, guid: 9f07fade9cea93a42974c192f69daf58, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 447c8bd2ee0eada4fbcf0709f6afabe1, type: 3}
+  m_Resource: {fileID: 8300000, guid: 447c8bd2ee0eada4fbcf0709f6afabe1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9062,6 +9062,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037235318976140173, guid: 61eb237832ad73043b7d30bb0849b29c, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5029411114487463657, guid: 61eb237832ad73043b7d30bb0849b29c, type: 3}
       propertyPath: m_Name
       value: Main UI
@@ -9695,15 +9699,15 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 155126127}
-  - {fileID: 975134596}
-  - {fileID: 27915195}
-  - {fileID: 8752502951348815642}
-  - {fileID: 536487055}
-  - {fileID: 627543284}
+  - {fileID: 519420032}
   - {fileID: 2058736281}
   - {fileID: 1954014480}
   - {fileID: 770858240}
+  - {fileID: 155126127}
+  - {fileID: 975134596}
+  - {fileID: 536487055}
+  - {fileID: 627543284}
+  - {fileID: 27915195}
+  - {fileID: 8752502951348815642}
   - {fileID: 1697607108}
