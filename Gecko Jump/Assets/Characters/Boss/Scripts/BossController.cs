@@ -1,8 +1,4 @@
 using System.Collections;
-using JetBrains.Annotations;
-using Unity.Cinemachine;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BossController : MonoBehaviour

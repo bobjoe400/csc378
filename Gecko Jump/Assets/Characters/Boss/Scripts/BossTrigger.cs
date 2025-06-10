@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Reflection;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 public class BossTrigger : MonoBehaviour
 {
@@ -59,7 +55,7 @@ public class BossTrigger : MonoBehaviour
     IEnumerator StartIntro()
     {
         PlaySound(encounterSound);
-        
+
         bossHealthUi.SetActive(true);
 
         GetComponent<PolygonCollider2D>().enabled = false;
