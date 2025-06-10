@@ -1,5 +1,8 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 
 public class BossController : MonoBehaviour
 {
@@ -29,11 +32,22 @@ public class BossController : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float soundVolume = 1f;
 
+    [Header("Win Screen")]
+    [SerializeField] private AudioSource mainMusic;
+    [SerializeField] private AudioClip winMusic;
+    [SerializeField] private GameObject winUi;
+    [SerializeField] private GameObject mainUi;
+    [SerializeField] private CinemachineCamera bossCamera;
+    [SerializeField] private PlayerInput playerInput;
+
+
     private ProjectileLauncher fireBallLauncher;
 
     private Animator animator;
 
     private bool isDead = false;
+
+    private Coroutine attackCoroutine;
 
     void Start()
     {
@@ -77,7 +91,7 @@ public class BossController : MonoBehaviour
 
     public void StartAttacking()
     {
-        StartCoroutine(AttackPeriod());
+        attackCoroutine = StartCoroutine(AttackPeriod());
     }
 
     IEnumerator AttackPeriod()
@@ -113,9 +127,16 @@ public class BossController : MonoBehaviour
     public void BossHitStart()
     {
         isInHitStun = true;
+
         if (animator.GetBool("Attacking"))
         {
             animator.SetBool("Attacking", false);
+        }
+
+         // Stop current attack cycle and restart with shorter delay
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
         }
 
         PlaySound(hitSound);
@@ -124,10 +145,22 @@ public class BossController : MonoBehaviour
     public void BossHitEnd()
     {
         isInHitStun = false;
+
+        attackCoroutine = StartCoroutine(AttackAfterHit());
+    }
+
+    IEnumerator AttackAfterHit()
+    {
+        yield return new WaitForSeconds(1f); // Shorter delay after being hit
+        
+        // Resume normal attack pattern
+        attackCoroutine = StartCoroutine(AttackPeriod());
     }
 
     public void BossDie()
     {
+        mainMusic.Stop();
+
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         gameObject.GetComponent<EnemyWaypointPatrol>().moveSpeed = 0;
 
@@ -139,7 +172,14 @@ public class BossController : MonoBehaviour
 
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
+        mainUi.SetActive(false);
+
         PlaySound(deathSound);
+
+        playerInput.enabled = false;
+        bossCamera.Priority = 11;
+
+        StartCoroutine(WinScreen());
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -149,6 +189,15 @@ public class BossController : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }    
+    }
+
+    IEnumerator WinScreen()
+    {
+        yield return new WaitForSeconds(1);
+
+        winUi.SetActive(true);
+        mainMusic.resource = winMusic;
+        mainMusic.Play();
     }
 
     Vector3 CalculateLeadingPosition()

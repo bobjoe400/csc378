@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isInHitStun || isDead ) return;
+
         health -= amount;
 
         if (health <= 0 && !isDead)
