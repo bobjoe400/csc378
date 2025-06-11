@@ -1,5 +1,7 @@
 "Lab 1" by Cooper Mattern
 
+Release along with a website, an interpreter, source text, a file of "Playthrough" called "playthrough.txt", and a file of "Report" called "report.pdf".
+
 [ Kinds and Properties ]
 A goat-status is a kind of value.  The goat-statuses are unaware, knows-missing, knows-stable, knows-found.
 A person has a goat-status called status.  The status of a person is usually unaware.
@@ -285,7 +287,6 @@ Allen is a person in AllenHouse.
 Every turn:
 	repeat with character running through people:
 		if character is idle:
-			say "[character] is idle [line break]";
 			let best be 4 AM;
 			repeat through the schedule of character:
 				if the time entry is the time of day or the time entry is before the time of day:
@@ -295,11 +296,9 @@ Every turn:
 				Choose the row with time of best in the schedule of character;
 				if the location of the character is not the destination entry:
 					set the movement path of character from the location of character to the destination entry;
-					say "character: [character][line break]    movement path:[movement path of character][line break]";
 					now character is moving;
 		if character is moving:
 			let current room be the location of the character;
-			say "[character] is moving [line break]    movement path:[the movement path of the character][line break]";
 			if the number of entries in the movement path of the character > 0:
 				let next room be entry 1 of the movement path of the character;
 				if the character is the conversing-with of the player:
@@ -311,10 +310,8 @@ Every turn:
 						now the talk delay of character is 0;
 						now the conversing-with of the player is nothing;
 				else:
-					say "    moving [character] from [current room] to [next room][line break]";
 					move character to next room;
 					remove entry 1 from the movement path of the character;
-					say "    number of entries: [number of entries in the movement path of the character][line break]";
 					if the number of entries in the movement path of the character is 0:
 						now character is idle;
 
@@ -342,6 +339,7 @@ Instead of taking The Goat:
 		stop the action;
 	say "You attach the leash to the goat. The goat will now follow you.";
 	now The Goat is untethered;
+	now The Goat is following;
 
 Every turn when Tom is in the location of the Goat and the Goat is tethered:
 	now the Goat is untethered;
@@ -508,11 +506,11 @@ Before opening a locked door:
 [ NPC Response Tables ]
 Table of NPC Responses About the Goat - Goat Responses
 NPC (text)	Response if Seen in Stable (text)	Response if Not Aware of Goat (text)	Response if Told Found (text)
-"Joseph"	"I saw your goat in the stable earlier, Joseph says. 'It looked fine to me.'"	"I haven't heard anything about your goat, maybe someone else knows something."	"That's great news! I'm glad you found it."
-"Hope"	"I saw your goat in the stable earlier, Hope says. 'It seemed safe there.'"	"I haven't heard anything about your goat, Hope says. 'Sorry I can't help.'"	"I'm so glad you found your goat,' Hope says with a smile."
-"Melia"	"Your goat is in the stable now, Melia says. 'But it's strange how it ended up in that hole.'"	"I haven't heard anything about your goat, Melia says. 'Maybe Tom knows something.'"	"Good to hear you found your goat,' Melia says. 'That must be a relief.'"
-"Tom"	"I found your goat in the field,' Tom says. 'It was stuck in a hole. Strange, isn't it?'"	"I haven't heard anything about your goat,' Tom says. 'I'll let you know if I find anything.'"	"Glad you found your goat,' Tom says. 'I was worried about it.'"
-"Allen"	"I saw your goat in the stable earlier, Allen says. 'It looked fine to me.'"	"I haven't heard anything about your goat,' Allen says curtly."	"Good for you,' Allen says. 'At least that's one less thing to worry about.'"
+"Joseph"	"'I saw your goat in the stable earlier,' Joseph says. 'It looked fine to me.'"	"'I haven't heard anything about your goat, maybe someone else knows something.'"	"'That's great news! I'm glad you found it.'"
+"Hope"	"'I saw your goat in the stable earlier,' Hope says. 'It seemed safe there.'"	"'I haven't heard anything about your goat, Hope says. 'Sorry I can't help.'"	"'I'm so glad you found your goat,' Hope says with a smile."
+"Melia"	"'Your goat is in the stable now,' Melia says. 'But it's strange how it ended up in that hole.'"	"'I haven't heard anything about your goat,' Melia says. 'Maybe Tom knows something.'"	"'Good to hear you found your goat,' Melia says. 'That must be a relief.'"
+"Tom"	"'I found your goat in the field,' Tom says. 'It was stuck in a hole. Strange, isn't it?'"	"'I haven't heard anything about your goat,' Tom says. 'I'll let you know if I find anything.'"	"'Glad you found your goat,' Tom says. 'I was worried about it.'"
+"Allen"	"'I saw your goat in the stable earlier,' Allen says. 'It looked fine to me.'"	"'I haven't heard anything about your goat,' Allen says curtly."	"'Good for you,' Allen says. 'At least that's one less thing to worry about.'"
 
 [ NPC Response Logic ]
 Instead of telling someone about "goat":
