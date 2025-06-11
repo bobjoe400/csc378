@@ -193,7 +193,7 @@ public class BossController : MonoBehaviour
 
     IEnumerator WinScreen()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
 
         winUi.SetActive(true);
         mainMusic.resource = winMusic;
