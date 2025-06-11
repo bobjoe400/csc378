@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://krfinbjhu47r"]
+
+[ext_resource type="Texture2D" uid="uid://dwytyg5k2jo7r" path="res://Gerald_Idle.png" id="1_22xei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy0wg"]
+atlas = ExtResource("1_22xei")
+region = Rect2(0, 0, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8rni"]
+atlas = ExtResource("1_22xei")
+region = Rect2(256, 0, 256, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dln1t"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy0wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8rni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+rotation = 1.5708
+scale = Vector2(0.24705, 0.24705)
+sprite_frames = SubResource("SpriteFrames_dln1t")
+frame = 1
+frame_progress = 0.117416
