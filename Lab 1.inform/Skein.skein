@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skein rootNode="node-1">
+  <generator>Windows Inform 7 6M62</generator>
+  <activeNode nodeId="node-120"/>
+  <item nodeId="node-1">
+    <command xml:space="preserve">Lab 1</command>
+    <result xml:space="preserve">You wake up to the sound of birds chirping outside your window. It's a peaceful morning in Clearhollow.&#x000A;&#x000A;Lab 1&#x000A;An Interactive Fiction by Cooper Mattern&#x000A;Release 1 / Serial number 250420 / Inform 7 build 6M62 (I6/v6.33 lib 6/12N) SD&#x000A;&#x000A;My House (on My Bed)&#x000A;Your home is modest but comfortable, with a bed and a small table.&#x000A;&#x000A;You can see a House Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>YES</changed>
+    <children>
+      <child nodeId="node-2"/>
+      <child nodeId="node-16"/>
+      <child nodeId="node-38"/>
+      <child nodeId="node-39"/>
+      <child nodeId="node-44"/>
+      <child nodeId="node-46"/>
+      <child nodeId="node-52"/>
+      <child nodeId="node-56"/>
+    </children>
+  </item>
+  <item nodeId="node-2">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">My House (on My Bed)&#x000A;You can see a House Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>YES</changed>
+    <children>
+      <child nodeId="node-3"/>
+      <child nodeId="node-13"/>
+    </children>
+  </item>
+  <item nodeId="node-3">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">North Village Road&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-4"/>
+    </children>
+  </item>
+  <item nodeId="node-4">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">If your goat went in there, it's long gone. Lets keep looking around the village.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-5"/>
+    </children>
+  </item>
+  <item nodeId="node-5">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Village Centre&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-6"/>
+    </children>
+  </item>
+  <item nodeId="node-6">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">North Village Road&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-7"/>
+    </children>
+  </item>
+  <item nodeId="node-7">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Wheat Field&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-8"/>
+    </children>
+  </item>
+  <item nodeId="node-8">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">You dont feel like going for a swim today.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-9"/>
+    </children>
+  </item>
+  <item nodeId="node-9">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Fishing House&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-10"/>
+    </children>
+  </item>
+  <item nodeId="node-10">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">You can't go that way.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-11"/>
+    </children>
+  </item>
+  <item nodeId="node-11">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">East Village Road&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-12"/>
+    </children>
+  </item>
+  <item nodeId="node-12">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">You dont feel like going for a swim today.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-13">
+    <command xml:space="preserve">o door </command>
+    <result xml:space="preserve">Sorry, that can't be corrected.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-14"/>
+    </children>
+  </item>
+  <item nodeId="node-14">
+    <command xml:space="preserve">open door</command>
+    <result xml:space="preserve">You'll need to get off My Bed first.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-15"/>
+    </children>
+  </item>
+  <item nodeId="node-15">
+    <command xml:space="preserve">get off </command>
+    <result xml:space="preserve">You'll need to get off My Bed first.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-16">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">You climb down from My Bed.&#x000A;&#x000A;As you step outside, you notice your prized goat is missing from the pen. Determined to find it, you set off to investigate.&#x000A;&#x000A;(first opening the House Door)&#x000A;&#x000A;My Yard&#x000A;The yard is fenced in, with a path leading to the goat pen.&#x000A;&#x000A;A sturdy leather leash lies coiled on the ground.&#x000A;&#x000A;You can also see a House Door, a Pen Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the open House Door to My House.&#x000A;    west through the Pen Door.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;character: Melia&#x000A;    movement path:North Village Centre, Village Centre, West Village Centre, Tavern Stable, The Common Area and Taproom&#x000A;Melia is moving &#x000A;    movement path:North Village Centre, Village Centre, West Village Centre, Tavern Stable, The Common Area and Taproom&#x000A;    moving Melia from Melia and Tom's House to North Village Centre&#x000A;    number of entries: 5&#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:05 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-17"/>
+      <child nodeId="node-35"/>
+      <child nodeId="node-79"/>
+    </children>
+  </item>
+  <item nodeId="node-17">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">(first opening the Yard Door)&#x000A;&#x000A;West Village Centre&#x000A;You can see a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     north to Tavern Stable.&#x000A;    south through the open Yard Door to My Yard.&#x000A;     east to Village Centre.&#x000A;     west to West Forest.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>YES</changed>
+    <children>
+      <child nodeId="node-18"/>
+    </children>
+  </item>
+  <item nodeId="node-18">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Village Centre&#x000A;From here, you can go:&#x000A;     north to North Village Centre.&#x000A;     south to South Village Centre.&#x000A;     east to East Village Centre.&#x000A;     west to West Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>YES</changed>
+    <children>
+      <child nodeId="node-19"/>
+    </children>
+  </item>
+  <item nodeId="node-19">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">East Village Centre&#x000A;You can see Joseph and Hope's House's Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     north to Fishing House.&#x000A;    south through Joseph and Hope's House's Door.&#x000A;     east to Lake.&#x000A;     west to Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-20"/>
+    </children>
+  </item>
+  <item nodeId="node-20">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">You dont feel like going for a swim today. Let's focus on finding our goat.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-21"/>
+    </children>
+  </item>
+  <item nodeId="node-21">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Fishing House&#x000A;From here, you can go:&#x000A;     north to Wheat Field.&#x000A;     south to East Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-22"/>
+    </children>
+  </item>
+  <item nodeId="node-22">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Wheat Field&#x000A;From here, you can go:&#x000A;     north to North Forest.&#x000A;     south to Fishing House.&#x000A;     east to Lake.&#x000A;     west to North Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-23"/>
+    </children>
+  </item>
+  <item nodeId="node-23">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">If your goat went in there, it's long gone. Let's keep looking around the village.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-24"/>
+    </children>
+  </item>
+  <item nodeId="node-24">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">North Village Centre&#x000A;You can see Melia and Tom's House's Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     north to North Forest.&#x000A;     south to Village Centre.&#x000A;     east to Wheat Field.&#x000A;    west through Melia and Tom's House's Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-25"/>
+    </children>
+  </item>
+  <item nodeId="node-25">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">If your goat went in there, it's long gone. Let's keep looking around the village.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-26"/>
+    </children>
+  </item>
+  <item nodeId="node-26">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Village Centre&#x000A;From here, you can go:&#x000A;     north to North Village Centre.&#x000A;     south to South Village Centre.&#x000A;     east to East Village Centre.&#x000A;     west to West Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-27"/>
+    </children>
+  </item>
+  <item nodeId="node-27">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">West Village Centre&#x000A;You can see a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     north to Tavern Stable.&#x000A;    south through the open Yard Door to My Yard.&#x000A;     east to Village Centre.&#x000A;     west to West Forest.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-28"/>
+    </children>
+  </item>
+  <item nodeId="node-28">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Tavern Stable&#x000A;You can see a Tavern Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     south to West Village Centre.&#x000A;    west through the Tavern Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-29"/>
+    </children>
+  </item>
+  <item nodeId="node-29">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">(first opening the Tavern Door)&#x000A;&#x000A;The Common Area&#x000A;You can see a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;     west to Taproom.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-30"/>
+    </children>
+  </item>
+  <item nodeId="node-30">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">If your goat went in there, it's long gone. Let's keep looking around the village.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-31"/>
+    </children>
+  </item>
+  <item nodeId="node-31">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">The Common Area&#x000A;You can see a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;     west to Taproom.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-32"/>
+    </children>
+  </item>
+  <item nodeId="node-32">
+    <command xml:space="preserve">open tavern Back Door</command>
+    <result xml:space="preserve">You open the Tavern Back Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-33"/>
+    </children>
+  </item>
+  <item nodeId="node-33">
+    <command xml:space="preserve">ls</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-34"/>
+    </children>
+  </item>
+  <item nodeId="node-34">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">The Common Area&#x000A;You can see a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open Tavern Back Door to North Forest.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;     west to Taproom.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-35">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Village Centre&#x000A;From here, you can go:&#x000A; north to North Village Centre.&#x000A; south to South Village Centre.&#x000A; east to East Village Centre.&#x000A; west to West Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-36"/>
+    </children>
+  </item>
+  <item nodeId="node-36">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">East Village Centre&#x000A;From here, you can go:&#x000A; north to Fishing House.&#x000A; south to Joseph and Hope's House.&#x000A; east to Lake.&#x000A; west to Village Centre.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-37"/>
+    </children>
+  </item>
+  <item nodeId="node-37">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">You dont feel like going for a swim today.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-79">
+    <command xml:space="preserve">take all</command>
+    <result xml:space="preserve">Leash: Taken.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is moving &#x000A;    movement path:Village Centre, West Village Centre, Tavern Stable, The Common Area and Taproom&#x000A;    moving Melia from North Village Centre to Village Centre&#x000A;    number of entries: 4&#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:10 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-80"/>
+    </children>
+  </item>
+  <item nodeId="node-80">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">My Yard&#x000A;The yard is fenced in, with a path leading to the goat pen.&#x000A;&#x000A;You can see a House Door, a Pen Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the open House Door to My House.&#x000A;    west through the Pen Door.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is moving &#x000A;    movement path:West Village Centre, Tavern Stable, The Common Area and Taproom&#x000A;    moving Melia from Village Centre to West Village Centre&#x000A;    number of entries: 3&#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:15 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-81"/>
+    </children>
+  </item>
+  <item nodeId="node-81">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">(first opening the Yard Door)&#x000A;&#x000A;West Village Centre&#x000A;The western part of the village feels more rustic, with dirt paths and wooden fences.&#x000A;&#x000A;You can see a Yard Door and Melia here.&#x000A;&#x000A;From here, you can go:&#x000A;    north to Tavern Stable.&#x000A;    south through the open Yard Door to My Yard.&#x000A;    east to Village Centre.&#x000A;    west to The West Forest.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is moving &#x000A;    movement path:Tavern Stable, The Common Area and Taproom&#x000A;    moving Melia from West Village Centre to Tavern Stable&#x000A;    number of entries: 2&#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:20 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-82"/>
+    </children>
+  </item>
+  <item nodeId="node-82">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Tavern Stable&#x000A;The stable smells of hay and animals. It's where villagers keep their livestock temporarily.&#x000A;&#x000A;You can see a Tavern Door and Melia here.&#x000A;&#x000A;From here, you can go:&#x000A;    south to West Village Centre.&#x000A;    west through the Tavern Door.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is moving &#x000A;    movement path:The Common Area and Taproom&#x000A;    moving Melia from Tavern Stable to The Common Area&#x000A;    number of entries: 1&#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:25 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-83"/>
+    </children>
+  </item>
+  <item nodeId="node-83">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">(first opening the Tavern Door)&#x000A;&#x000A;The Common Area&#x000A;The tavern's main area, filled with tables and chairs. Villagers gather here to eat and talk.&#x000A;&#x000A;You can see a Lodge Door, a Tavern Door, Melia and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;    west to Taproom.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is moving &#x000A;    movement path:Taproom&#x000A;    moving Melia from The Common Area to Taproom&#x000A;    number of entries: 0&#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:30 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-84"/>
+    </children>
+  </item>
+  <item nodeId="node-84">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">Taproom&#x000A;The taproom is lively, with the sound of mugs clinking and laughter echoing.&#x000A;&#x000A;You can see Melia here.&#x000A;&#x000A;From here, you can go:&#x000A;    east to The Common Area.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:35 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-85"/>
+    </children>
+  </item>
+  <item nodeId="node-85">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">You can't go that way.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:40 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-86"/>
+    </children>
+  </item>
+  <item nodeId="node-86">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">The Common Area&#x000A;The tavern's main area, filled with tables and chairs. Villagers gather here to eat and talk.&#x000A;&#x000A;You can see a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;    west to Taproom.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:45 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-87"/>
+    </children>
+  </item>
+  <item nodeId="node-87">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:50 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-88"/>
+    </children>
+  </item>
+  <item nodeId="node-88">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;7:55 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-89"/>
+    </children>
+  </item>
+  <item nodeId="node-89">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:00 am&#x000A;You hear the breakfast bell ringing. Everyone in the village goes to the tavern across from your house for breakfast.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-90"/>
+    </children>
+  </item>
+  <item nodeId="node-90">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;character: Joseph&#x000A;    movement path:East Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;Joseph is moving &#x000A;    movement path:East Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Joseph from Joseph and Hope's House to East Village Centre&#x000A;    number of entries: 4&#x000A;Hope is idle &#x000A;character: Hope&#x000A;    movement path:East Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;Hope is moving &#x000A;    movement path:East Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Hope from Joseph and Hope's House to East Village Centre&#x000A;    number of entries: 4&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;character: Tom&#x000A;    movement path:North Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;Tom is moving &#x000A;    movement path:North Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Tom from Melia and Tom's House to North Village Centre&#x000A;    number of entries: 4&#x000A;Goat is idle &#x000A;Allen is idle &#x000A;character: Allen&#x000A;    movement path:South Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;Allen is moving &#x000A;    movement path:South Village Centre, Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Allen from Allen's House to South Village Centre&#x000A;    number of entries: 4&#x000A;&#x000A;8:05 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-91"/>
+    </children>
+  </item>
+  <item nodeId="node-91">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Joseph from East Village Centre to Village Centre&#x000A;    number of entries: 3&#x000A;Hope is moving &#x000A;    movement path:Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Hope from East Village Centre to Village Centre&#x000A;    number of entries: 3&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Tom from North Village Centre to Village Centre&#x000A;    number of entries: 3&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:Village Centre, West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Allen from South Village Centre to Village Centre&#x000A;    number of entries: 3&#x000A;&#x000A;8:10 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-92"/>
+    </children>
+  </item>
+  <item nodeId="node-92">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Joseph from Village Centre to West Village Centre&#x000A;    number of entries: 2&#x000A;Hope is moving &#x000A;    movement path:West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Hope from Village Centre to West Village Centre&#x000A;    number of entries: 2&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Tom from Village Centre to West Village Centre&#x000A;    number of entries: 2&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:West Village Centre, Tavern Stable and The Common Area&#x000A;    moving Allen from Village Centre to West Village Centre&#x000A;    number of entries: 2&#x000A;&#x000A;8:15 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-93"/>
+    </children>
+  </item>
+  <item nodeId="node-93">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:Tavern Stable and The Common Area&#x000A;    moving Joseph from West Village Centre to Tavern Stable&#x000A;    number of entries: 1&#x000A;Hope is moving &#x000A;    movement path:Tavern Stable and The Common Area&#x000A;    moving Hope from West Village Centre to Tavern Stable&#x000A;    number of entries: 1&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Tavern Stable and The Common Area&#x000A;    moving Tom from West Village Centre to Tavern Stable&#x000A;    number of entries: 1&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:Tavern Stable and The Common Area&#x000A;    moving Allen from West Village Centre to Tavern Stable&#x000A;    number of entries: 1&#x000A;&#x000A;8:20 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-94"/>
+    </children>
+  </item>
+  <item nodeId="node-94">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:The Common Area&#x000A;    moving Joseph from Tavern Stable to The Common Area&#x000A;    number of entries: 0&#x000A;Hope is moving &#x000A;    movement path:The Common Area&#x000A;    moving Hope from Tavern Stable to The Common Area&#x000A;    number of entries: 0&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:The Common Area&#x000A;    moving Tom from Tavern Stable to The Common Area&#x000A;    number of entries: 0&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:The Common Area&#x000A;    moving Allen from Tavern Stable to The Common Area&#x000A;    number of entries: 0&#x000A;&#x000A;8:25 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-95"/>
+    </children>
+  </item>
+  <item nodeId="node-95">
+    <command xml:space="preserve">again</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:30 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-96"/>
+    </children>
+  </item>
+  <item nodeId="node-96">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">The Common Area&#x000A;The tavern's main area, filled with tables and chairs. Villagers gather here to eat and talk.&#x000A;&#x000A;You can see Allen, Tom, Hope, Joseph, a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;    west to Taproom.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:35 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-97"/>
+    </children>
+  </item>
+  <item nodeId="node-97">
+    <command xml:space="preserve">talk to allen about the goat </command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-98"/>
+    </children>
+  </item>
+  <item nodeId="node-98">
+    <command xml:space="preserve">ask allen about the goat</command>
+    <result xml:space="preserve">There is no reply.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:40 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-99"/>
+    </children>
+  </item>
+  <item nodeId="node-99">
+    <command xml:space="preserve">ask allen about goat</command>
+    <result xml:space="preserve">I haven't heard anything about your goat," Allen says curtly.&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:45 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-100"/>
+    </children>
+  </item>
+  <item nodeId="node-100">
+    <command xml:space="preserve">ask joseph about goat</command>
+    <result xml:space="preserve">I haven't heard anything about your goat, maybe someone else knows something.&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:50 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-101"/>
+    </children>
+  </item>
+  <item nodeId="node-101">
+    <command xml:space="preserve">ask hope about goat</command>
+    <result xml:space="preserve">I haven't heard anything about your goat, Hope says. "Sorry I can't help."&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;8:55 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-102"/>
+    </children>
+  </item>
+  <item nodeId="node-102">
+    <command xml:space="preserve">tell tom about goat</command>
+    <result xml:space="preserve">I haven't heard anything about your goat," Tom says. "I'll let you know if I find anything."&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:00 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-103"/>
+    </children>
+  </item>
+  <item nodeId="node-103">
+    <command xml:space="preserve">wait </command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;character: Joseph&#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, East Village Centre and Fishing House&#x000A;Joseph is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, East Village Centre and Fishing House&#x000A;    moving Joseph from The Common Area to Tavern Stable&#x000A;    number of entries: 4&#x000A;Hope is idle &#x000A;character: Hope&#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, South Village Centre and The Common Shelf&#x000A;Hope is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, South Village Centre and The Common Shelf&#x000A;    moving Hope from The Common Area to Tavern Stable&#x000A;    number of entries: 4&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;character: Tom&#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;Tom is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;Tom pauses and says, "I'm heading to the Wheat Field, but I can spare a moment to talk."&#x000A;Goat is idle &#x000A;Allen is idle &#x000A;character: Allen&#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, South Village Centre and The South Forest&#x000A;Allen is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, South Village Centre and The South Forest&#x000A;    moving Allen from The Common Area to Tavern Stable&#x000A;    number of entries: 4&#x000A;&#x000A;9:05 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-104"/>
+    </children>
+  </item>
+  <item nodeId="node-104">
+    <command xml:space="preserve">tell tom about goat</command>
+    <result xml:space="preserve">I haven't heard anything about your goat," Tom says. "I'll let you know if I find anything."&#x000A;Joseph is moving &#x000A;    movement path:West Village Centre, Village Centre, East Village Centre and Fishing House&#x000A;    moving Joseph from Tavern Stable to West Village Centre&#x000A;    number of entries: 3&#x000A;Hope is moving &#x000A;    movement path:West Village Centre, Village Centre, South Village Centre and The Common Shelf&#x000A;    moving Hope from Tavern Stable to West Village Centre&#x000A;    number of entries: 3&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;Tom pauses and says, "I'm heading to the Wheat Field, but I can spare a moment to talk."&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:West Village Centre, Village Centre, South Village Centre and The South Forest&#x000A;    moving Allen from Tavern Stable to West Village Centre&#x000A;    number of entries: 3&#x000A;&#x000A;9:10 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-105"/>
+    </children>
+  </item>
+  <item nodeId="node-105">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:Village Centre, East Village Centre and Fishing House&#x000A;    moving Joseph from West Village Centre to Village Centre&#x000A;    number of entries: 2&#x000A;Hope is moving &#x000A;    movement path:Village Centre, South Village Centre and The Common Shelf&#x000A;    moving Hope from West Village Centre to Village Centre&#x000A;    number of entries: 2&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;Tom pauses and says, "I'm heading to the Wheat Field, but I can spare a moment to talk."&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:Village Centre, South Village Centre and The South Forest&#x000A;    moving Allen from West Village Centre to Village Centre&#x000A;    number of entries: 2&#x000A;&#x000A;9:15 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-106"/>
+    </children>
+  </item>
+  <item nodeId="node-106">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:East Village Centre and Fishing House&#x000A;    moving Joseph from Village Centre to East Village Centre&#x000A;    number of entries: 1&#x000A;Hope is moving &#x000A;    movement path:South Village Centre and The Common Shelf&#x000A;    moving Hope from Village Centre to South Village Centre&#x000A;    number of entries: 1&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;Tom says, "I really need to get going now."&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:South Village Centre and The South Forest&#x000A;    moving Allen from Village Centre to South Village Centre&#x000A;    number of entries: 1&#x000A;&#x000A;9:20 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-107"/>
+    </children>
+  </item>
+  <item nodeId="node-107">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is moving &#x000A;    movement path:Fishing House&#x000A;    moving Joseph from East Village Centre to Fishing House&#x000A;    number of entries: 0&#x000A;Hope is moving &#x000A;    movement path:The Common Shelf&#x000A;    moving Hope from South Village Centre to The Common Shelf&#x000A;    number of entries: 0&#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Tavern Stable, West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;    moving Tom from The Common Area to Tavern Stable&#x000A;    number of entries: 4&#x000A;Goat is idle &#x000A;Allen is moving &#x000A;    movement path:The South Forest&#x000A;    moving Allen from South Village Centre to The South Forest&#x000A;    number of entries: 0&#x000A;&#x000A;9:25 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-108"/>
+    </children>
+  </item>
+  <item nodeId="node-108">
+    <command xml:space="preserve">wait </command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:West Village Centre, Village Centre, North Village Centre and Wheat Field&#x000A;    moving Tom from Tavern Stable to West Village Centre&#x000A;    number of entries: 3&#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:30 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-109"/>
+    </children>
+  </item>
+  <item nodeId="node-109">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Village Centre, North Village Centre and Wheat Field&#x000A;    moving Tom from West Village Centre to Village Centre&#x000A;    number of entries: 2&#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:35 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-110"/>
+    </children>
+  </item>
+  <item nodeId="node-110">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:North Village Centre and Wheat Field&#x000A;    moving Tom from Village Centre to North Village Centre&#x000A;    number of entries: 1&#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:40 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-111"/>
+    </children>
+  </item>
+  <item nodeId="node-111">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is moving &#x000A;    movement path:Wheat Field&#x000A;    moving Tom from North Village Centre to Wheat Field&#x000A;    number of entries: 0&#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:45 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-112"/>
+    </children>
+  </item>
+  <item nodeId="node-112">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:50 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-113"/>
+    </children>
+  </item>
+  <item nodeId="node-113">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;9:55 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-114"/>
+    </children>
+  </item>
+  <item nodeId="node-114">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;10:00 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-115"/>
+    </children>
+  </item>
+  <item nodeId="node-115">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;10:05 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-116"/>
+    </children>
+  </item>
+  <item nodeId="node-116">
+    <command xml:space="preserve">wait</command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;10:10 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-117"/>
+    </children>
+  </item>
+  <item nodeId="node-117">
+    <command xml:space="preserve">wait </command>
+    <result xml:space="preserve">Time passes.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;10:15 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-118"/>
+    </children>
+  </item>
+  <item nodeId="node-118">
+    <command xml:space="preserve">wait until 11:45</command>
+    <result xml:space="preserve">I only understood you as far as wanting to wait.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-119"/>
+    </children>
+  </item>
+  <item nodeId="node-119">
+    <command xml:space="preserve">wait 11:45am</command>
+    <result xml:space="preserve">I only understood you as far as wanting to wait.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-120"/>
+    </children>
+  </item>
+  <item nodeId="node-120">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">The Common Area&#x000A;The tavern's main area, filled with tables and chairs. Villagers gather here to eat and talk.&#x000A;&#x000A;You can see a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;    west to Taproom.&#x000A;&#x000A;Joseph is idle &#x000A;Hope is idle &#x000A;yourself is idle &#x000A;Melia is idle &#x000A;Tom is idle &#x000A;Goat is idle &#x000A;Allen is idle &#x000A;&#x000A;10:20 am&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-38">
+    <command xml:space="preserve">North</command>
+    <result xml:space="preserve">(first getting off My Bed)&#x000A;(first opening the House Door)&#x000A;&#x000A;My Yard&#x000A;You can see a House Door, a Pen Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the House Door.&#x000A;    west through the Pen Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-39">
+    <command xml:space="preserve">o house door</command>
+    <result xml:space="preserve">Sorry, that can't be corrected.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-40"/>
+    </children>
+  </item>
+  <item nodeId="node-40">
+    <command xml:space="preserve">open house door</command>
+    <result xml:space="preserve">You open the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-41"/>
+    </children>
+  </item>
+  <item nodeId="node-41">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">My House (on My Bed)&#x000A;You can see a House Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the House Door.to My Yard &#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-42"/>
+    </children>
+  </item>
+  <item nodeId="node-42">
+    <command xml:space="preserve">look through the house door</command>
+    <result xml:space="preserve">You find nothing of interest.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-43"/>
+    </children>
+  </item>
+  <item nodeId="node-43">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">My House (on My Bed)&#x000A;You can see a House Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the House Door.to My Yard &#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-44">
+    <command xml:space="preserve">open House Door</command>
+    <result xml:space="preserve">You open the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-45"/>
+    </children>
+  </item>
+  <item nodeId="node-45">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">My House (on My Bed)&#x000A;You can see a House Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open the House Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-46">
+    <command xml:space="preserve">open door</command>
+    <result xml:space="preserve">You climb down from My Bed.&#x000A;&#x000A;You open the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>YES</changed>
+    <children>
+      <child nodeId="node-47"/>
+      <child nodeId="node-49"/>
+    </children>
+  </item>
+  <item nodeId="node-47">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">My House (on My Bed)&#x000A;You can see a House Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open House Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-48"/>
+    </children>
+  </item>
+  <item nodeId="node-48">
+    <command xml:space="preserve">get up</command>
+    <result xml:space="preserve">You get off My Bed.&#x000A;&#x000A;My House&#x000A;You can see a House Door and My Bed here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open House Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-49">
+    <command xml:space="preserve">look </command>
+    <result xml:space="preserve">My House&#x000A;You can see a House Door and My Bed here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open House Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-50"/>
+    </children>
+  </item>
+  <item nodeId="node-50">
+    <command xml:space="preserve">think</command>
+    <result xml:space="preserve">What a good idea.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-51"/>
+    </children>
+  </item>
+  <item nodeId="node-51">
+    <command xml:space="preserve">think</command>
+    <result xml:space="preserve">What a good idea.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-52">
+    <command xml:space="preserve">o door </command>
+    <result xml:space="preserve">Sorry, that can't be corrected.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-53"/>
+    </children>
+  </item>
+  <item nodeId="node-53">
+    <command xml:space="preserve">open door</command>
+    <result xml:space="preserve">You'll need to get off My Bed first.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-54"/>
+    </children>
+  </item>
+  <item nodeId="node-54">
+    <command xml:space="preserve">get off </command>
+    <result xml:space="preserve">You'll need to get off My Bed first.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-55"/>
+    </children>
+  </item>
+  <item nodeId="node-55">
+    <command xml:space="preserve">get off my bed</command>
+    <result xml:space="preserve">You'll need to get off My Bed first.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-56">
+    <command xml:space="preserve">open door </command>
+    <result xml:space="preserve">You climb down from My Bed.&#x000A;&#x000A;You open the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-57"/>
+    </children>
+  </item>
+  <item nodeId="node-57">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">My House&#x000A;You can see a House Door and My Bed here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open House Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-58"/>
+    </children>
+  </item>
+  <item nodeId="node-58">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">My Yard&#x000A;You can see a House Door, a Pen Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the open House Door to My House.&#x000A;    west through the Pen Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-59"/>
+    </children>
+  </item>
+  <item nodeId="node-59">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">My House&#x000A;You can see a House Door and My Bed here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the open House Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-60"/>
+    </children>
+  </item>
+  <item nodeId="node-60">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">My Yard&#x000A;You can see a House Door, a Pen Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the open House Door to My House.&#x000A;    west through the Pen Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-61"/>
+    </children>
+  </item>
+  <item nodeId="node-61">
+    <command xml:space="preserve">close door</command>
+    <result xml:space="preserve">Which do you mean, the House Door, the Pen Door or the Yard Door?&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-62"/>
+    </children>
+  </item>
+  <item nodeId="node-62">
+    <command xml:space="preserve">close the house door</command>
+    <result xml:space="preserve">You close the House Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-63"/>
+    </children>
+  </item>
+  <item nodeId="node-63">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">My Yard&#x000A;You can see a House Door, a Pen Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the House Door.&#x000A;    west through the Pen Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-64"/>
+    </children>
+  </item>
+  <item nodeId="node-64">
+    <command xml:space="preserve">w </command>
+    <result xml:space="preserve">(first opening the Pen Door)&#x000A;&#x000A;My Goat Pen&#x000A;You can see a Pen Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    east through the open Pen Door to My Yard.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-65"/>
+    </children>
+  </item>
+  <item nodeId="node-65">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">My Yard&#x000A;You can see a Pen Door, a House Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the House Door.&#x000A;    west through the open Pen Door to My Goat Pen.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-66"/>
+    </children>
+  </item>
+  <item nodeId="node-66">
+    <command xml:space="preserve">close pen door</command>
+    <result xml:space="preserve">You close the Pen Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-67"/>
+    </children>
+  </item>
+  <item nodeId="node-67">
+    <command xml:space="preserve">l</command>
+    <result xml:space="preserve">My Yard&#x000A;You can see a Pen Door, a House Door and a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Yard Door.&#x000A;    south through the House Door.&#x000A;    west through the Pen Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-68"/>
+    </children>
+  </item>
+  <item nodeId="node-68">
+    <command xml:space="preserve">exit</command>
+    <result xml:space="preserve">But you aren't in anything at the moment.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-69"/>
+    </children>
+  </item>
+  <item nodeId="node-69">
+    <command xml:space="preserve">exits</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-70"/>
+    </children>
+  </item>
+  <item nodeId="node-70">
+    <command xml:space="preserve">where</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-71"/>
+    </children>
+  </item>
+  <item nodeId="node-71">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">(first opening the Yard Door)&#x000A;&#x000A;West Village Centre&#x000A;You can see a Yard Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     north to Tavern Stable.&#x000A;    south through the open Yard Door to My Yard.&#x000A;     east to Village Centre.&#x000A;     west to West Forest.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-72"/>
+    </children>
+  </item>
+  <item nodeId="node-72">
+    <command xml:space="preserve">close yard door</command>
+    <result xml:space="preserve">You close the Yard Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-73"/>
+    </children>
+  </item>
+  <item nodeId="node-73">
+    <command xml:space="preserve">ls</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-74"/>
+    </children>
+  </item>
+  <item nodeId="node-74">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">If your goat went in there, it's long gone. Let's keep looking around the village.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-75"/>
+    </children>
+  </item>
+  <item nodeId="node-75">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Tavern Stable&#x000A;You can see a Tavern Door here.&#x000A;&#x000A;From here, you can go:&#x000A;     south to West Village Centre.&#x000A;    west through the Tavern Door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-76"/>
+    </children>
+  </item>
+  <item nodeId="node-76">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">(first opening the Tavern Door)&#x000A;&#x000A;The Common Area&#x000A;You can see a Lodge Door, a Tavern Door and a Tavern Back Door here.&#x000A;&#x000A;From here, you can go:&#x000A;    north through the Tavern Back Door.&#x000A;    south through the Lodge Door.&#x000A;    east through the open Tavern Door to Tavern Stable.&#x000A;     west to Taproom.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-77"/>
+    </children>
+  </item>
+  <item nodeId="node-77">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">(first opening the Tavern Back Door)&#x000A;&#x000A;North Forest&#x000A;You can see a Tavern Back Door here.&#x000A;&#x000A;There are no obvious exits from here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-78"/>
+    </children>
+  </item>
+  <item nodeId="node-78">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">North Forest&#x000A;You can see a Tavern Back Door here.&#x000A;&#x000A;There are no obvious exits from here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+</Skein>
