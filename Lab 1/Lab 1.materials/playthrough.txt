@@ -1,0 +1,214 @@
+Lab 1 - Playthrough Guide
+By Cooper Mattern
+
+The information in this document is based on my own playthroughs and analysis of the story code. This guide contains spoilers for the interactive fiction game "Lab 1" and is intended to help players achieve specific endings.
+
+IMPORTANT NOTE FROM THE AUTHOR:
+This playthrough guide is provided for completionist players who want to see all possible outcomes. However, I encourage first-time players to play the game naturally and discover their own path through the mystery. The game is designed to be played organically, with the player's choices leading to whatever conclusion feels most natural for their investigation.
+
+GAME OVERVIEW:
+"Lab 1" is a mystery set in the village of Clearhollow where you play as Rowan, investigating your missing goat. The game takes place over a single day (7:01 AM to 8:00 PM) and features a real-time progression system where NPCs follow their own schedules. Your goal is to find your goat and potentially discover who was responsible for its disappearance.
+
+USEFUL COMMANDS:
+- examine [object] or x [object]
+- talk to [person] about [topic] or ask [person] about [topic]
+- tell [person] about [topic]
+- knock on [door]
+- take [object] or get [object]
+- go [direction] or just type the direction
+- wait or z (to pass time)
+- inventory or i
+
+KEY LOCATIONS:
+- My House/My Yard/My Goat Pen (your starting area)
+- Village Centre (central hub)
+- The Common Area (tavern main room)
+- The Taproom (tavern side room)
+- The Tavern Stable (where the goat ends up)
+- The Wheat Field (where the hole is located)
+- Allen's House (where the shovel is found)
+
+KEY NPCS AND THEIR SCHEDULES:
+- Joseph: 8 AM Common Area, 9 AM Fishing House, 5 PM Common Area, 7 PM his house
+- Hope: 8 AM Common Area, 9 AM Village Shoppe, 5 PM Common Area, 7 PM her house
+- Melia: 7 AM Taproom, 9 AM Taproom, 5 PM Taproom, 7 PM her house
+- Tom: 8 AM Common Area, 9 AM Wheat Field, 5 PM Taproom, 7 PM his house
+- Allen: 8 AM Common Area, 9 AM South Forest, 5 PM Taproom, 7 PM his house
+
+IMPORTANT ITEMS:
+- The Leash: Found in My Yard - needed to lead the goat
+- The Shovel: Found in Allen's House - key evidence
+- The Goat: Found in The Hole in the Wheat Field
+
+==================================================================
+
+ENDING 1: BEST ENDING - You find your goat and know who did it
+==================================================================
+
+This ending requires you to:
+1. Find the goat in the hole
+2. Get the shovel from Allen's house 
+3. Have both items when you examine the goat in the stable
+
+WALKTHROUGH:
+
+> north
+(You leave your house and learn about the missing goat)
+
+> get leash
+(Take the leash from your yard - you'll need this)
+
+> north
+> east
+> north
+(Go to the Wheat Field)
+
+> examine hole
+(You find your goat in the hole! Your status changes to "knows-found")
+
+> south
+> west  
+> south
+> west
+> south
+> east
+(Go to Allen's House)
+
+> knock on door
+(Allen comes out)
+
+> tell allen about goat
+(He'll give a non-committal response)
+
+> wait
+(Wait for Allen to leave, or continue conversation until he goes back inside)
+
+> south
+> west
+> north
+> east
+> north
+(Return to Allen's House when he's not around)
+
+> south
+> take shovel
+(Get the shovel - this is crucial evidence)
+
+> north
+> west
+> south
+> west
+> north
+> west
+(Go to the Tavern Stable)
+
+> wait
+(Wait around until Tom brings the goat to the stable - this happens automatically through the story's schedule system around midday)
+
+When Tom brings the goat to the stable:
+
+> examine goat
+(With the shovel in your possession, you'll realize Allen's shovel was used to dig the hole)
+
+SUCCESS! The game ends with: "You found your goat and know who did it."
+
+==================================================================
+
+ENDING 2: PARTIAL SUCCESS - You find your goat but don't know who did it  
+==================================================================
+
+This ending occurs when you find the goat but don't have the shovel as evidence.
+
+WALKTHROUGH:
+
+> north
+> get leash
+> north
+> east  
+> north
+(Go to the Wheat Field)
+
+> examine hole
+(Find the goat)
+
+> wait
+(Stay in the area or go to the tavern and wait for Tom to move the goat)
+
+> go to tavern stable
+(Navigate to The Tavern Stable)
+
+> wait
+(Wait for Tom to bring the goat)
+
+> examine goat
+(Without the shovel, you won't be able to identify the culprit)
+
+RESULT: "You found your goat, but you have no idea who dug the hole."
+
+==================================================================
+
+ENDING 3: FAILURE - You don't find your goat and don't know who did it
+==================================================================
+
+This ending occurs if you fail to locate the goat or don't follow the correct sequence.
+
+WAYS TO ACHIEVE THIS ENDING:
+
+Option A - Never find the hole:
+> north
+> get leash  
+> north
+(Go to Village Centre and talk to NPCs, but never go to the Wheat Field)
+
+> wait
+> wait
+> wait
+(Keep waiting until 8:00 PM without finding the goat)
+
+Option B - Find evidence but not the goat:
+> north
+> get leash
+> (Go get the shovel from Allen's house)
+> (Talk to NPCs but never examine the hole)
+> wait until 8:00 PM
+
+Option C - Simply wait until time runs out:
+> wait
+> wait  
+> wait
+(Keep waiting/exploring without making progress until 8:00 PM)
+
+RESULT: "The sun sets, and you still haven't found your goat. It's too late now."
+
+==================================================================
+
+ADDITIONAL NOTES:
+==================================================================
+
+TIME MANAGEMENT:
+- The game runs from 7:01 AM to 8:00 PM
+- NPCs move according to their schedules
+- Key event: Tom automatically moves the goat to the stable around midday (12:00 PM)
+
+CONVERSATION SYSTEM:
+- NPCs have different responses based on your knowledge status
+- Talk to NPCs about the goat to gather information
+- Their responses change based on whether you've found the goat
+
+INVESTIGATION TIPS:
+- The Wheat Field is crucial - this is where you find both the goat and evidence of digging
+- Allen's house contains the key evidence (the shovel)
+- The Tavern Stable is where the goat ends up safe
+- Pay attention to NPC schedules - Tom is the one who finds and moves the goat
+
+ALTERNATIVE APPROACHES:
+- You can talk to NPCs to gather information about the goat
+- Some NPCs will direct you toward useful locations
+- The mystery has multiple layers - finding the goat vs. finding the culprit
+
+TECHNICAL NOTES:
+- The game uses a sophisticated NPC AI system where characters follow realistic schedules
+- Your "status" variable tracks your progress (unaware -> knows-missing -> knows-found)
+- The ending is determined by your status and inventory when key events trigger
+
+Remember: The best experience comes from playing naturally and letting your curiosity guide you through the investigation!
